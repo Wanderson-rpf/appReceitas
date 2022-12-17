@@ -5,15 +5,16 @@ const initialState = {
   password: '',
 };
 
-export const recipeInProgressSlice = createSlice({
-  name: 'recipeInProgress',
+export const userSlice = createSlice({
+  name: 'user',
   initialState,
   reducers: {
     saveUser: (state, action) =>{
-      state.email = action.payload
+      state.email = action.payload.email
+      state.password = action.payload.password
     }
   },
 });
 
-export const { saveUser } = recipeInProgressSlice.actions;
-export default recipeInProgressSlice.reducer;
+export const { saveUser } = userSlice.actions;
+export const userReducer = userSlice.reducer;
