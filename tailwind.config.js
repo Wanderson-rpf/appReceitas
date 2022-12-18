@@ -4,7 +4,12 @@ module.exports = {
     "./src/**/*.{html,js,jsx}", "./public/*.html"
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'dispay': ['Figtree'],
+        'body': ['Figtree'],
+      },
+    },
   },
   plugins: [],
 }
