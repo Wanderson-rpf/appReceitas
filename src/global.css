@@ -2,10 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
-/* <------------ tela de login ------------> */
 .login-container {
   background: #ff5733;
-  @apply text-white flex flex-col h-screen justify-center;
+  @apply text-white flex flex-col h-screen justify-center items-center;
+}
+
+.container-intro {
+  @apply pb-3;
+}
+
+.container-buttons {
+  @apply flex pb-5;
+}
+
+.text-intro {
+  @apply text-center p-9 font-dispay text-lg;
+}
+
+.btn-home {
+  @apply focus:outline-none
+  text-black
+  bg-yellow-400
+  hover:bg-yellow-500
+  focus:ring-4
+  focus:ring-yellow-300
+  font-medium
+  rounded-lg
+  text-sm
+  px-5
+  py-2.5
+  mr-2
+  mb-2
+  dark:focus:ring-yellow-900
+  w-40
 }
 
 .form-container {
@@ -44,6 +73,5 @@
   mb-2
   dark:focus:ring-yellow-900
 }
-/* <------------ tela de login ------------> */
 
 
