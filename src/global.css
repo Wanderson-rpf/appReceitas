@@ -81,7 +81,7 @@
 }
 
 .toggle {
-  @apply w-10 h-10 mr-3 bg-white rounded-full flex justify-center items-stretch;
+  @apply w-10 h-10 mr-3 bg-white rounded-full flex justify-center items-stretch z-10;
 }
 
 .toggle::before {
@@ -92,7 +92,7 @@
   height: 3px;
   background-color: orangered;
   transform: translateY(14px);
-  transition: 1s;
+  transition: 1s ease-in-out;
 }
 
 .toggle::after {
@@ -101,9 +101,9 @@
   position: absolute;
   width: 25px;
   height: 3px;
-  background-color: orangered;
+  background-color: #ff5733;
   transform: translateY(22px);
-  transition: 1s;
+  transition: 1s ease-in-out;
 }
 
 .toggle.active::before {
@@ -112,4 +112,12 @@
 
 .toggle.toggle.active::after {
   transform: translateY(18px) rotate(225deg);
+}
+
+.container-menu {
+  @apply w-48 h-screen bg-clrMain-100 top-0 right-0 absolute;
+}
+
+.container-meals {
+  @apply h-screen bg-slate-500;
 }
