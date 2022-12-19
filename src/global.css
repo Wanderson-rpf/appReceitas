@@ -3,8 +3,7 @@
 @tailwind utilities;
 
 .login-container {
-  background: #ff5733;
-  @apply text-white flex flex-col h-screen justify-center items-center;
+  @apply text-white flex flex-col h-screen justify-center items-center bg-clrMain-100;
 }
 
 .container-intro {
@@ -16,7 +15,7 @@
 }
 
 .text-intro {
-  @apply text-center p-9 font-dispay text-lg;
+  @apply text-center p-9 font-display text-lg;
 }
 
 .btn-home {
@@ -45,7 +44,7 @@
   @apply bg-gray-50 
   border 
   border-white
-  text-gray-900 
+  text-gray-900
   text-sm 
   rounded-lg
   focus:border-white
@@ -54,7 +53,6 @@
   dark:bg-white bg-opacity-50
   dark:border-gray-400
   dark:placeholder-gray-400
-  dark:text-white
 }
 
 .btn-login {
@@ -74,4 +72,10 @@
   dark:focus:ring-yellow-900
 }
 
+.container-header {
+  @apply bg-clrMain-100 max-h-20 flex;
+}
 
+.logo-secondary {
+  @apply w-32 m-2;
+}
