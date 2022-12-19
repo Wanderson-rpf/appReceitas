@@ -22,7 +22,7 @@ function Home() {
           receitas favoritas em seu perfil.
         </p>
         <p className="text-intro">
-          Caso já tenha cadastro, clique em login e boa apetite!
+          Caso já tenha cadastro, clique em login.
         </p>
       </div>
       <div className="container-buttons">

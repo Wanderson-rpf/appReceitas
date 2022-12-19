@@ -6,8 +6,12 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'dispay': ['Figtree'],
-        'body': ['Figtree'],
+        'display': ['Figtree'],
+      },
+      colors: {
+        clrMain: {
+          100: '#ff5733',
+        }
       },
     },
   },
