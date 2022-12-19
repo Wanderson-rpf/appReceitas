@@ -73,9 +73,43 @@
 }
 
 .container-header {
-  @apply bg-clrMain-100 max-h-20 flex;
+  @apply bg-clrMain-100 max-h-20 flex justify-between items-center;
 }
 
 .logo-secondary {
   @apply w-32 m-2;
+}
+
+.toggle {
+  @apply w-10 h-10 mr-3 bg-white rounded-full flex justify-center items-stretch;
+}
+
+.toggle::before {
+  border-radius: 3px;
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 3px;
+  background-color: orangered;
+  transform: translateY(14px);
+  transition: 1s;
+}
+
+.toggle::after {
+  border-radius: 3px;
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 3px;
+  background-color: orangered;
+  transform: translateY(22px);
+  transition: 1s;
+}
+
+.toggle.active::before {
+  transform: translateY(18px) rotate(-405deg);
+}
+
+.toggle.toggle.active::after {
+  transform: translateY(18px) rotate(225deg);
 }
