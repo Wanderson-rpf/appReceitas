@@ -1,16 +1,37 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { saveUser } from "../feature/user/userSlice";
 import logoPrincipal from "../img/logo_principal_branca.png";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isDisabled, setIsDisabled] = useState(true);
   const dispacth = useDispatch();
+  const navigate = useNavigate();
+
+  const validateEmail = () => {
+    const regexEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+    return regexEmail.test(email);
+  }
+
+  const validatePassword = () => {
+    const minCharacters = 7;
+    return password.length >= minCharacters;
+  };
 
   const handleClickLogin = () => {
-    dispacth(saveUser({ email, password }));
+    navigate('/meals');
   };
+
+  useEffect(() => {
+    if (validateEmail() && validatePassword()) {
+      setIsDisabled(false);
+    } else {
+      setIsDisabled(true);
+    }
+  }, [email, password]);
 
   return (
     <div className="login-container">
@@ -46,6 +67,7 @@ function Login() {
         <button 
           className="btn-login"
           type="button" 
+          disabled={ isDisabled }
           onClick={handleClickLogin}
         >
           Sign in
