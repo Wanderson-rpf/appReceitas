@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  @apply font-display;
+}
+
 .login-container {
   @apply text-white flex flex-col h-screen justify-center items-center bg-clrMain-100;
 }
@@ -73,9 +77,99 @@
 }
 
 .container-header {
-  @apply bg-clrMain-100 max-h-20 flex;
+  @apply bg-clrMain-100 max-h-20 flex justify-between items-center;
 }
 
 .logo-secondary {
   @apply w-32 m-2;
+}
+
+.toggle {
+  @apply w-10 h-10 mr-3 bg-white rounded-full flex justify-center items-stretch z-20;
+}
+
+.toggle::before {
+  border-radius: 3px;
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 3px;
+  background-color: orangered;
+  transform: translateY(14px);
+  transition: 1s ease-in-out;
+}
+
+.toggle::after {
+  border-radius: 3px;
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 3px;
+  background-color: #ff5733;
+  transform: translateY(22px);
+  transition: 1s ease-in-out;
+}
+
+.toggle.active::before {
+  transform: translateY(18px) rotate(-405deg);
+}
+
+.toggle.toggle.active::after {
+  transform: translateY(18px) rotate(225deg);
+}
+
+.container-menu {
+  @apply w-48 h-screen bg-clrMain-50 top-0 right-0 absolute drop-shadow-xl z-10;
+}
+
+.container-meals {
+  @apply h-screen;
+}
+
+.container-list-menu {
+  @apply mt-20 flex flex-col h-screen relative;
+}
+
+.list-items {
+  @apply flex text-white gap-3 ml-3 items-center mb-8 text-lg;
+}
+
+.icon-menu {
+  @apply text-2xl;
+}
+
+.opt-logout {
+  @apply absolute bottom-24;
+}
+
+.box-search {
+  @apply flex flex-col justify-center w-screen items-center mt-2;
+}
+
+.label-search {
+  @apply border-solid border-2 border-clrMain-100 rounded-lg p-1 w-11/12;
+}
+
+.label-search-show {
+  @apply border-solid border-2 border-clrMain-100 rounded-t-lg p-1 w-11/12;
+}
+
+.input-search {
+  @apply w-full border-none outline-none px-2;
+}
+
+.search-type {
+  @apply flex flex-col justify-center items-center bg-clrMain-100 w-11/12 rounded-b-lg drop-shadow-md;
+}
+
+.container-filter {
+  @apply flex justify-center items-center gap-7 text-white text-lg;
+}
+
+.radio_filter {
+  @apply mr-1;
+}
+
+.btn-search {
+  @apply bg-white text-clrMain-100 m-3 w-48 rounded-sm font-semibold text-lg;
 }

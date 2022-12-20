@@ -2,13 +2,14 @@ import React from "react";
 import Header from "../components/Header";
 import Seach from "../components/Seach";
 
-function Meals() {
+function Drinks() {
   return (
-    <div className="container-meals">
+    <div>
       <Header />
       <Seach />
+      <h1>Drinks</h1>
     </div>
   );
 }
 
-export default Meals;
+export default Drinks;

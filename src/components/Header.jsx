@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import logoHeader from '../img/logo_secundaria_branca.png'
-import { FaUserCircle } from 'react-icons/fa';
+import Menu from "./Menu";
 
 function Header() {
+  const [menuActive, setMenuActive] = useState(false);
+
+  const handleToggleMenu = () => {
+    setMenuActive(!menuActive);
+  };
+
   return (
     <div className="container-header">
       <img src={ logoHeader } alt="Logo secundaria branca" className="logo-secondary" />
+      <div className={ menuActive ? 'toggle active' : 'toggle'} onClick={handleToggleMenu}></div>
+      { menuActive && <Menu />}
     </div>
   );
 }
