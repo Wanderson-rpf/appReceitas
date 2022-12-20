@@ -119,5 +119,21 @@
 }
 
 .container-meals {
-  @apply h-screen bg-slate-500;
+  @apply h-screen;
+}
+
+.container-list-menu {
+  @apply mt-20 flex flex-col h-screen relative;
+}
+
+.list-items {
+  @apply flex text-white gap-3 ml-3 items-center mb-8 text-lg;
+}
+
+.icon-menu {
+  @apply text-2xl;
+}
+
+.opt-logout {
+  @apply absolute bottom-24;
 }
