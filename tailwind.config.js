@@ -10,6 +10,7 @@ module.exports = {
       },
       colors: {
         clrMain: {
+          50: '#FF6C4D',
           100: '#ff5733',
         }
       },

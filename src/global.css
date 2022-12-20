@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  @apply font-display;
+}
+
 .login-container {
   @apply text-white flex flex-col h-screen justify-center items-center bg-clrMain-100;
 }
@@ -115,7 +119,7 @@
 }
 
 .container-menu {
-  @apply w-48 h-screen bg-clrMain-100 top-0 right-0 absolute;
+  @apply w-48 h-screen bg-clrMain-50 top-0 right-0 absolute drop-shadow-xl;
 }
 
 .container-meals {
@@ -136,4 +140,28 @@
 
 .opt-logout {
   @apply absolute bottom-24;
+}
+
+.box-search {
+  @apply flex flex-col justify-center w-screen items-center mt-2;
+}
+
+.input-search {
+  @apply border-solid border-2 border-clrMain-100 rounded-t-lg p-1 w-11/12;
+}
+
+.search-type {
+  @apply flex flex-col justify-center items-center bg-clrMain-100 w-11/12 rounded-b-lg drop-shadow-md;
+}
+
+.container-filter {
+  @apply flex justify-center items-center gap-7 text-white text-lg;
+}
+
+.radio_filter {
+  @apply mr-1;
+}
+
+.btn-search {
+  @apply bg-white text-clrMain-100 m-3 w-48 rounded-sm font-semibold text-lg;
 }
