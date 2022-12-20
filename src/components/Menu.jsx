@@ -23,13 +23,13 @@ function Menu() {
             </Link>
           </li>
           <li>
-            <Link to="/profile" className="list-items">
+            <Link to="/meals" className="list-items">
               <TbMeat className="icon-menu" />
               <p>Meals</p>
             </Link>
           </li>
           <li>
-            <Link to="/profile" className="list-items">
+            <Link to="/drinks" className="list-items">
               <BiDrink className="icon-menu" />
               <p>Drinks</p>
             </Link>
@@ -41,7 +41,7 @@ function Menu() {
             </Link>
           </li>
           <li>
-            <Link to="/recipe-done" className="list-items">
+            <Link to="/done-recipes" className="list-items">
               <AiOutlineCheckCircle className="icon-menu" />
               <p>Recipes Done</p>
             </Link>
