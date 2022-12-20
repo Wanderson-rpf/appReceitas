@@ -1,9 +1,7 @@
 import React from "react";
-import { FaUserCircle } from 'react-icons/fa';
-import { MdFavorite } from 'react-icons/md';
-import { BsFillCheckCircleFill } from 'react-icons/bs';
+import { MdOutlineFavoriteBorder } from 'react-icons/md';
 import { FiLogOut } from 'react-icons/fi';
-import { FaHome } from 'react-icons/fa';
+import { AiOutlineHome, AiOutlineUser, AiOutlineCheckCircle } from 'react-icons/ai';
 import { TbMeat } from 'react-icons/tb';
 import { BiDrink } from 'react-icons/bi';
 import { Link } from "react-router-dom";
@@ -14,13 +12,13 @@ function Menu() {
         <ul className="container-list-menu">
         <li>
             <Link to="/meals" className="list-items">
-              <FaHome className="icon-menu" />
+              <AiOutlineHome className="icon-menu" />
               <p>Home</p>
             </Link>
           </li>
           <li>
             <Link to="/profile" className="list-items">
-              <FaUserCircle className="icon-menu" />
+              <AiOutlineUser className="icon-menu" />
               <p>User</p>
             </Link>
           </li>
@@ -38,13 +36,13 @@ function Menu() {
           </li>
           <li>
             <Link to="/favorite" className="list-items">
-              <MdFavorite className="icon-menu" />
+              <MdOutlineFavoriteBorder className="icon-menu" />
               <p>Favorites</p>
             </Link>
           </li>
           <li>
             <Link to="/recipe-done" className="list-items">
-              <BsFillCheckCircleFill className="icon-menu" />
+              <AiOutlineCheckCircle className="icon-menu" />
               <p>Recipes Done</p>
             </Link>
           </li>
