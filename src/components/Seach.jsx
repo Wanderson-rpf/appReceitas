@@ -3,21 +3,28 @@ import React, { useState } from "react";
 function Seach() {
   const [search, setSearch] = useState('');
   const [filter, setFilter] = useState('');
+  const [showSearch, setShowSearch] = useState(false);
 
   return (
     <div>
       <form className="box-search">
-        <label htmlFor="input__search" className="input-search">
+        <label 
+          htmlFor="input__search"
+          className={showSearch ? 'label-search-show' : 'label-search' }>
           <input
+            className="input-search"
+            autoComplete="off"
             type="text"
             name="search"
             id="input__search"
             placeholder="Search"
             value={ search }
             onChange={ ({target}) => setSearch(target.value) }
+            onClick={ () => setShowSearch(!showSearch) }
           />
         </label>
-        <div className="search-type">
+        { showSearch && (
+          <div className="search-type">
           <div className="container-filter">
             <label htmlFor="radio__name">
               <input
@@ -48,6 +55,7 @@ function Seach() {
             Search
           </button>
         </div>
+        )}
       </form>
     </div>
   );
