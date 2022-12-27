@@ -2,12 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  @apply max-w-sm max-h-screen;
+}
+
 body {
-  @apply font-display;
+  @apply font-display overflow-hidden max-w-sm max-h-screen;
 }
 
 .login-container {
-  @apply text-white flex flex-col h-screen justify-center items-center bg-clrMain-100;
+  @apply text-white flex flex-col h-screen w-screen justify-center items-center bg-clrMain-100;
 }
 
 .container-intro {
@@ -15,7 +19,7 @@ body {
 }
 
 .container-buttons {
-  @apply flex pb-5;
+  @apply flex pb-20;
 }
 
 .text-intro {
@@ -77,7 +81,7 @@ body {
 }
 
 .container-header {
-  @apply bg-clrMain-100 max-h-20 flex justify-between items-center;
+  @apply bg-clrMain-100 max-h-20 w-screen flex justify-between items-center;
 }
 
 .logo-secondary {
@@ -142,6 +146,14 @@ body {
   @apply absolute bottom-24;
 }
 
+.container-title {
+  @apply w-full flex items-center justify-center;
+}
+
+.box-title {
+  @apply bg-clrMain-100 text-white text-2xl w-2/4 my-1 p-1 flex items-center justify-center gap-2 rounded-lg;
+}
+
 .box-search {
   @apply flex flex-col justify-center w-screen items-center mt-2;
 }
@@ -163,7 +175,7 @@ body {
 }
 
 .container-filter {
-  @apply flex justify-center items-center gap-7 text-white text-lg;
+  @apply flex justify-center items-center gap-7 text-white text-lg w-screen;
 }
 
 .radio_filter {
@@ -172,4 +184,20 @@ body {
 
 .btn-search {
   @apply bg-white text-clrMain-100 m-3 w-48 rounded-sm font-semibold text-lg;
+}
+
+.container-type-filter {
+  @apply w-screen mt-3 flex flex-col justify-start;
+}
+
+.icon-filter {
+  @apply text-3xl text-clrMain-100;
+}
+
+.filters {
+  @apply h-24 flex flex-wrap justify-center items-center gap-2;
+}
+
+.category {
+  @apply bg-clrMain-50 text-white px-1 rounded-md;
 }

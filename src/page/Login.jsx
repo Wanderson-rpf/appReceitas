@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { saveUser } from "../feature/user/userSlice";
+import { saveLogin } from "../feature/login/loginSlice";
 import logoPrincipal from "../img/logo_principal_branca.png";
 
 function Login() {
@@ -22,6 +22,7 @@ function Login() {
   };
 
   const handleClickLogin = () => {
+    dispacth(saveLogin({email, password}))
     navigate('/meals');
   };
 
