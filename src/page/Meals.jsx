@@ -1,5 +1,5 @@
 import React from "react";
-import { GiHotMeal } from 'react-icons/gi'
+import { GiHotMeal } from "react-icons/gi";
 import Filter from "../components/Filter";
 import Header from "../components/Header";
 import Recipes from "../components/Recipes";

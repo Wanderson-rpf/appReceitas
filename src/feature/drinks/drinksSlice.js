@@ -1,10 +1,18 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { requestCategoryDrinks } from "../../services/Api";
+import { recipesDrinksApi, requestCategoryDrinks } from "../../services/Api";
 
 export const fetchCategoryDrinks = createAsyncThunk(
   'drinks/fetchCategories',
   async () => {
     const responseApi = await requestCategoryDrinks();
+    return responseApi;
+  }
+)
+
+export const fetchRecipesDrinks = createAsyncThunk(
+  'drinks/fetchRecipeDrinks',
+  async () => {
+    const responseApi = await recipesDrinksApi();
     return responseApi;
   }
 )
@@ -22,9 +30,16 @@ export const drinksSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    // Category Drinks
     builder.addCase(fetchCategoryDrinks.fulfilled, (state, action) => {
       state.categoriesRecipeDrinks = action.payload;
-      console.log('reducerCategoriesDrinks', state.categoriesRecipeRrinks);
+      console.log('reducerCategoriesDrinks', state.categoriesRecipeDrinks);
+    })
+
+    // Recipes Drinks
+    builder.addCase(fetchRecipesDrinks.fulfilled, (state, action) => {
+      state.recipeDrinks = action.payload;
+      console.log('reducerRecipesDrinks', state.recipeDrinks);
     })
   }
 });

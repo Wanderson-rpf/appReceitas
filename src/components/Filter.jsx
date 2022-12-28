@@ -31,9 +31,6 @@ function Filter() {
     }
   };
 
-  console.log("Teste de map do filter");
-  filter.map((test, index) => console.log(test[index]));
-
   return (
     <div className="container-type-filter">
       {filterActive ? (

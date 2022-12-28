@@ -2,6 +2,7 @@ import React from "react";
 import { ImGlass2 } from 'react-icons/im';
 import Filter from "../components/Filter";
 import Header from "../components/Header";
+import Recipes from "../components/Recipes";
 import Seach from "../components/Seach";
 
 function Drinks() {
@@ -17,6 +18,7 @@ function Drinks() {
       </div>
       <Seach />
       <Filter />
+      <Recipes />
     </div>
   );
 }

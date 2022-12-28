@@ -191,7 +191,7 @@ body {
 }
 
 .icon-filter {
-  @apply text-3xl text-clrMain-100;
+  @apply text-3xl text-clrMain-100 ml-3;
 }
 
 .filters {
