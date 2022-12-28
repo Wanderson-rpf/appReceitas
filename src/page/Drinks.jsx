@@ -1,5 +1,6 @@
 import React from "react";
 import { ImGlass2 } from 'react-icons/im';
+import ButtonPageUp from "../components/ButtonPageUp";
 import Filter from "../components/Filter";
 import Header from "../components/Header";
 import Recipes from "../components/Recipes";
@@ -19,6 +20,7 @@ function Drinks() {
       <Seach />
       <Filter />
       <Recipes />
+      <ButtonPageUp />
     </div>
   );
 }

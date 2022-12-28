@@ -209,3 +209,25 @@ body {
 .icon-page-up {
   @apply text-white w-9 h-9;
 }
+
+/* <------------------ Recipes ------------------ > */
+.container-recipe {
+  @apply grid grid-cols-2 w-screen;
+}
+
+.container-item-recipe {
+  /* border: 3px solid green; */
+  @apply h-64 m-2;
+}
+
+.box-recipe {
+  @apply w-full flex flex-col items-center justify-center relative;
+}
+
+.thumb-recipe {
+  @apply w-28 absolute z-50 border-2 border-clrMain-100 rounded-full;
+}
+
+.box-info-recipe {
+  @apply relative flex flex-col items-center justify-center rounded-3xl w-full h-40 top-20 pt-12 border-2 border-clrMain-100;
+}

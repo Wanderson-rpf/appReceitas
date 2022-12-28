@@ -62,12 +62,17 @@ function Recipes() {
   };
 
   return (
-    <div>
+    <div className="container-recipe">
       { verifyTypeRecipe().map((recipe, index) => (
-        <div key={index}>
-          <img src={recipe[thumbRecipe()]} alt="recipe" />
-          <p>{recipe[strNameRecipe()]}</p>
-          <p>{recipe[idRecipe()]}</p>
+        <div key={index} className="container-item-recipe">
+          <div className="box-recipe">
+            <img src={recipe[thumbRecipe()]} alt="recipe" className="thumb-recipe" />
+            <div className="box-info-recipe">
+              <p>{recipe[strNameRecipe()]}</p>
+              <div>buttons</div>
+              <p>{recipe[idRecipe()]}</p>
+            </div>
+          </div>
         </div>
       )) }
     </div>
