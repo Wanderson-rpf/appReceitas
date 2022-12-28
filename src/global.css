@@ -89,7 +89,7 @@ body {
 }
 
 .toggle {
-  @apply w-10 h-10 mr-3 bg-white rounded-full flex justify-center items-stretch z-20;
+  @apply w-10 h-10 mr-3 bg-white rounded-full flex justify-center items-stretch z-40;
 }
 
 .toggle::before {
@@ -123,7 +123,7 @@ body {
 }
 
 .container-menu {
-  @apply w-48 h-screen bg-clrMain-50 top-0 right-0 absolute drop-shadow-xl z-10;
+  @apply w-48 h-screen bg-clrMain-50 top-0 right-0 absolute drop-shadow-xl z-30;
 }
 
 .container-meals {
@@ -202,13 +202,15 @@ body {
   @apply bg-clrMain-50 text-white px-1 rounded-md;
 }
 
+/* <------------------ Button page up ------------------ > */
 .button-page-up {
-  @apply flex items-center justify-center bottom-2 left-2 fixed w-10 h-10 bg-clrMain-100 rounded-3xl;
+  @apply flex items-center justify-center z-30 bottom-2 left-2 fixed w-10 h-10 bg-clrMain-100 rounded-3xl;
 }
 
 .icon-page-up {
   @apply text-white w-9 h-9;
 }
+/* <------------------ Button page up ------------------ > */
 
 /* <------------------ Recipes ------------------ > */
 .container-recipe {
@@ -216,7 +218,6 @@ body {
 }
 
 .container-item-recipe {
-  /* border: 3px solid green; */
   @apply h-64 m-2;
 }
 
@@ -225,9 +226,9 @@ body {
 }
 
 .thumb-recipe {
-  @apply w-28 absolute z-50 border-2 border-clrMain-100 rounded-full;
+  @apply w-32 absolute z-10 border border-clrMain-100 rounded-full;
 }
 
 .box-info-recipe {
-  @apply relative flex flex-col items-center justify-center rounded-3xl w-full h-40 top-20 pt-12 border-2 border-clrMain-100;
+  @apply relative flex flex-col items-center justify-center rounded-3xl w-full h-40 top-20 pt-12 border border-clrMain-100 shadow-lg;
 }
