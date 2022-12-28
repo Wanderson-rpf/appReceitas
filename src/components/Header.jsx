@@ -10,7 +10,7 @@ function Header() {
   };
 
   return (
-    <div className="container-header">
+    <div className="container-header" id="header">
       <img src={ logoHeader } alt="Logo secundaria branca" className="logo-secondary" />
       <div className={ menuActive ? 'toggle active' : 'toggle'} onClick={handleToggleMenu}></div>
       { menuActive && <Menu />}

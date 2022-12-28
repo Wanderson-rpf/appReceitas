@@ -33,13 +33,11 @@ export const drinksSlice = createSlice({
     // Category Drinks
     builder.addCase(fetchCategoryDrinks.fulfilled, (state, action) => {
       state.categoriesRecipeDrinks = action.payload;
-      console.log('reducerCategoriesDrinks', state.categoriesRecipeDrinks);
     })
 
     // Recipes Drinks
     builder.addCase(fetchRecipesDrinks.fulfilled, (state, action) => {
       state.recipeDrinks = action.payload;
-      console.log('reducerRecipesDrinks', state.recipeDrinks);
     })
   }
 });

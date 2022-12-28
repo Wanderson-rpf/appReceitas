@@ -27,9 +27,18 @@ function Recipes() {
       recipes = mealsRecipe;
     } else if (location.pathname.includes("drinks")) {
       recipes = drinksRecipe;
-      console.log('Recipes Drinks:', recipes);
     }
     return recipes;
+  };
+
+  const thumbRecipe = () => {
+    let strName;
+    if (page === 'meals') {
+      strName = 'strMealThumb';
+    } else if (page === 'drinks') {
+      strName = 'strDrinkThumb';
+    }
+    return strName;
   };
 
   const strNameRecipe = () => {
@@ -42,11 +51,23 @@ function Recipes() {
     return strName;
   };
 
+  const idRecipe = () => {
+    let strName;
+    if (page === 'meals') {
+      strName = 'idMeal';
+    } else if (page === 'drinks') {
+      strName = 'idDrink';
+    }
+    return strName;
+  };
+
   return (
     <div>
       { verifyTypeRecipe().map((recipe, index) => (
         <div key={index}>
+          <img src={recipe[thumbRecipe()]} alt="recipe" />
           <p>{recipe[strNameRecipe()]}</p>
+          <p>{recipe[idRecipe()]}</p>
         </div>
       )) }
     </div>

@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 html {
-  @apply max-w-sm max-h-screen;
+  @apply max-w-sm max-h-screen scroll-smooth;
 }
 
 body {
-  @apply font-display overflow-hidden max-w-sm max-h-screen;
+  @apply font-display max-w-sm max-h-screen;
 }
 
 .login-container {
@@ -200,4 +200,12 @@ body {
 
 .category {
   @apply bg-clrMain-50 text-white px-1 rounded-md;
+}
+
+.button-page-up {
+  @apply flex items-center justify-center bottom-2 left-2 fixed w-10 h-10 bg-clrMain-100 rounded-3xl;
+}
+
+.icon-page-up {
+  @apply text-white w-9 h-9;
 }

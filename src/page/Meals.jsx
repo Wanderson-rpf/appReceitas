@@ -1,5 +1,6 @@
 import React from "react";
 import { GiHotMeal } from "react-icons/gi";
+import ButtonPageUp from "../components/ButtonPageUp";
 import Filter from "../components/Filter";
 import Header from "../components/Header";
 import Recipes from "../components/Recipes";
@@ -19,6 +20,7 @@ function Meals() {
       <Seach />
       <Filter />
       <Recipes />
+      <ButtonPageUp />
     </div>
   );
 }

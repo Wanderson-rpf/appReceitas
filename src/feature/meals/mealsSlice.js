@@ -38,7 +38,6 @@ export const mealsSlice = createSlice({
     // Recipes Meals
     builder.addCase(fetchRecipesMeals.fulfilled, (state, action) => {
       state.recipeMeals = action.payload;
-      console.log('reducerRecipes', state.recipeMeals);
     })
   }
 });
