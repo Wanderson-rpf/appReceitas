@@ -232,3 +232,24 @@ body {
 .box-info-recipe {
   @apply relative flex flex-col items-center justify-center rounded-3xl w-full h-40 top-20 pt-12 border border-clrMain-100 shadow-lg;
 }
+
+.name-recipe {
+  @apply bg-clrMain-100 text-white mt-4 px-2 rounded-lg text-xl;
+}
+
+.container-icon-recipe{
+  @apply flex gap-2 my-2;
+}
+
+.icon {
+  @apply text-3xl text-clrMain-100;
+}
+
+.category-recipe {
+  @apply text-xs;
+}
+
+.btn-go-recipe {
+  @apply border border-clrMain-100 px-3 rounded-md mt-2;
+}
+/* <------------------ Recipes ------------------ > */
