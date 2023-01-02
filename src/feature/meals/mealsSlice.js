@@ -28,7 +28,11 @@ const initialState = {
 export const mealsSlice = createSlice({
   name: 'meals',
   initialState,
-  reducers: {},
+  reducers: {
+    selectMealsRecipe : (state, action) => {
+      state.meals = action.payload
+    }
+  },
   extraReducers: (builder) => {
     // Categories Meals
     builder.addCase(fetchCategoryMeals.fulfilled, (state, action) => {
@@ -42,4 +46,5 @@ export const mealsSlice = createSlice({
   }
 });
 
+export const { selectMealsRecipe } = mealsSlice.actions;
 export const mealsReducer = mealsSlice.reducer;

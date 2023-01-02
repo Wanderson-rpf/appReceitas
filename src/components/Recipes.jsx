@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { GiShare } from "react-icons/gi";
-import { MdOutlineFavoriteBorder, MdOutlineFavorite } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
-import { fetchRecipesDrinks } from "../feature/drinks/drinksSlice";
-import { fetchRecipesMeals } from "../feature/meals/mealsSlice";
+import { useLocation, useNavigate } from "react-router-dom";
+import { fetchRecipesDrinks, selectDrinksRecipe } from "../feature/drinks/drinksSlice";
+import { fetchRecipesMeals, selectMealsRecipe } from "../feature/meals/mealsSlice";
 
 function Recipes() {
   const dispacth = useDispatch();
   const location = useLocation();
+  const navigate = useNavigate();
   const [page, setPage] = useState("");
   const mealsRecipe = useSelector((state) => state.meals.recipeMeals);
   const drinksRecipe = useSelector((state) => state.drinks.recipeDrinks);
@@ -53,21 +52,28 @@ function Recipes() {
     return strName;
   };
 
-  const idRecipe = () => {
-    let strName;
-    if (page === "meals") {
-      strName = "idMeal";
-    } else if (page === "drinks") {
-      strName = "idDrink";
+  const handleOpenRecipe = (id) => {
+    navigate('/recipe-detail');
+    console.log(id);
+    if (page==="meals") {
+      const recipeSelected = mealsRecipe.filter((element) => element.idMeal === id);
+      console.log(recipeSelected);
+      dispacth(selectMealsRecipe(recipeSelected))
+    } else if (page==="drinks") {
+      const recipeSelected = drinksRecipe.filter((element) => element.idDrink === id);
+      console.log(recipeSelected);
+      dispacth(selectDrinksRecipe(recipeSelected));
     }
-    return strName;
   };
 
   return (
     <div className="container-recipe">
       {verifyTypeRecipe().map((recipe, index) => (
         <div key={index} className="container-item-recipe">
-          <div className="box-recipe">
+          <div
+            id={ page==="meals" ? recipe.idMeal : recipe.idDrink }
+            className="box-recipe"
+          >
             <img
               src={recipe[thumbRecipe()]}
               alt="recipe"
@@ -76,14 +82,13 @@ function Recipes() {
             <div className="box-info-recipe">
               <p className="name-recipe">{recipe[strNameRecipe()]}</p>
               <p className="category-recipe">{recipe.strCategory}</p>
-              <button type="button" className="btn-go-recipe">Ir para Receita</button>
-              {
-                // <div className="container-icon-recipe">
-                //   <GiShare className="icon" />
-                //   <MdOutlineFavoriteBorder className="icon" />
-                // </div>
-              }
-              {/* <p className="cod-recipe">{recipe[idRecipe()]}</p> */}
+              <button
+                type="button"
+                onClick={ () => handleOpenRecipe(page==="meals" ? recipe.idMeal : recipe.idDrink) }
+                className="btn-go-recipe"
+              >
+                Ir para Receita
+              </button>
             </div>
           </div>
         </div>
