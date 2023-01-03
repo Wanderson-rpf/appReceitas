@@ -13,37 +13,37 @@ function Menu() {
         <li>
             <Link to="/meals" className="list-items">
               <AiOutlineHome className="icon-menu" />
-              <p>Home</p>
+              <p>Início</p>
             </Link>
           </li>
           <li>
             <Link to="/profile" className="list-items">
               <AiOutlineUser className="icon-menu" />
-              <p>User</p>
+              <p>Usuário</p>
             </Link>
           </li>
           <li>
             <Link to="/meals" className="list-items">
               <TbMeat className="icon-menu" />
-              <p>Meals</p>
+              <p>Pratos</p>
             </Link>
           </li>
           <li>
             <Link to="/drinks" className="list-items">
               <BiDrink className="icon-menu" />
-              <p>Drinks</p>
+              <p>Bebidas</p>
             </Link>
           </li>
           <li>
             <Link to="/favorite" className="list-items">
               <MdOutlineFavoriteBorder className="icon-menu" />
-              <p>Favorites</p>
+              <p>Favoritos</p>
             </Link>
           </li>
           <li>
             <Link to="/done-recipes" className="list-items">
               <AiOutlineCheckCircle className="icon-menu" />
-              <p>Recipes Done</p>
+              <p>Concluídas</p>
             </Link>
           </li>
           <li className="opt-logout">
