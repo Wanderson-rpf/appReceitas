@@ -8,7 +8,7 @@ function Recipes() {
   const dispacth = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
-  const [page, setPage] = useState("");
+  const [page, setPage] = useState('');
   const mealsRecipe = useSelector((state) => state.meals.recipeMeals);
   const drinksRecipe = useSelector((state) => state.drinks.recipeDrinks);
 
@@ -53,16 +53,14 @@ function Recipes() {
   };
 
   const handleOpenRecipe = (id) => {
-    navigate('/recipe-detail');
-    console.log(id);
     if (page==="meals") {
       const recipeSelected = mealsRecipe.filter((element) => element.idMeal === id);
-      console.log(recipeSelected);
-      dispacth(selectMealsRecipe(recipeSelected))
+      dispacth(selectMealsRecipe(recipeSelected));
+      navigate(`/${page}/${id}`)
     } else if (page==="drinks") {
       const recipeSelected = drinksRecipe.filter((element) => element.idDrink === id);
-      console.log(recipeSelected);
       dispacth(selectDrinksRecipe(recipeSelected));
+      navigate(`/${page}/${id}`)
     }
   };
 
