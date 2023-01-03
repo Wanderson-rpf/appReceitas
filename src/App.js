@@ -23,7 +23,8 @@ function App() {
       <Route path='/profile' element={<Profile />} />
       <Route path='/favorite' element={<Favorites />} />
       <Route path='/done-recipes' element={<DoneRecipes />} />
-      <Route path='/recipe-detail' element={<RecipeDetail />} />
+      <Route path='/meals/:id' element={<RecipeDetail />} />
+      <Route path='/drinks/:id' element={<RecipeDetail />} />
       <Route path='/recipe-in-progress' element={<RecipeInProgress />} />
     </Routes>
   );
