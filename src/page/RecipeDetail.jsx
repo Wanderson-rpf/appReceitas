@@ -8,15 +8,15 @@ function RecipeDetail() {
   const mealsRecipe = useSelector((state) => state.meals.meals);
   const drinksRecipe = useSelector((state) => state.drinks.drinks);
   const [recipeSelected, setRecipeSelected] = useState([]);
-  const [page, setPage] = useState('');
+  const [isMeal, setIsMeal] = useState(false);
 
   useEffect(() => {
     if (location.pathname.includes('meals')) {
       setRecipeSelected(mealsRecipe);
-      setPage('meals');
+      setIsMeal(true);
     } else if (location.pathname.includes('drinks')) {
       setRecipeSelected(drinksRecipe);
-      setPage('drinks');
+      setIsMeal(false);
     } else {
       console.log('Pagina não encontrada.');
     }
@@ -32,14 +32,57 @@ function RecipeDetail() {
     return idRecipe;
   };
 
-  console.log(recipeSelected);
+  const ingredientsList = recipeSelected.map((element) => Object.entries(element)
+  .filter((elem) => elem[0].includes('strIngredient')
+  && elem[1] !== ''
+  && elem[1] !== ' '
+  && elem[1] !== null)
+  .map((ingredients) => ingredients[1])).flat();
+
+const measureList = recipeSelected.map((element) => Object.entries(element)
+  .filter((elem) => elem[0].includes('strMeasure')
+  && elem[1] !== ''
+  && elem[1] !== ' '
+  && elem[1] !== null)
+  .map((ingredients) => ingredients[1])).flat();
 
   return (
     <div>
       <Header />
       { recipeSelected.map((recipe) => (
         <div key={verifyId}>
-          <img src={ page==='meals' ? recipe.strMealThumb : recipe.strDrinkThumb } alt="thumb recipe" />
+          <div>
+            <img src={ isMeal ? recipe.strMealThumb : recipe.strDrinkThumb } alt="thumb recipe" />
+          </div>
+          <div>
+            <h1>{ isMeal ? recipe.strMeal : recipe.strDrink }</h1>
+            <p>{ recipe.strCategory }</p>
+            { !isMeal && (<p>{ recipe.strAlcoholic }</p>) }
+          </div>
+          <div>
+            <h2>Ingredientes</h2>
+            { ingredientsList.map((ingredient, index) => (
+              <ul key={index}>
+                <li>{`${ingredient} - ${measureList[index]}`}</li>
+              </ul>
+            ))}
+          </div>
+          <div>
+              <h2>Instruções</h2>
+              { recipe.strInstructions }
+          </div>
+          <div>
+            {isMeal && <iframe
+              width="96%"
+              height="315"
+              title="video-recipe"
+              src={ `https://www.youtube.com/embed/${recipe.strYoutube.split('=').pop()}` }
+            />
+            }
+          </div>
+          <div>
+            <h2>Recomenações de acompanhamentos</h2>
+          </div>
         </div>
       ))}
     </div>
