@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
+import CarouselRecommendations from "../components/CarouselRecommendations";
 import Header from "../components/Header";
 
 function RecipeDetail() {
@@ -81,7 +82,8 @@ const measureList = recipeSelected.map((element) => Object.entries(element)
             }
           </div>
           <div>
-            <h2>Recomenações de acompanhamentos</h2>
+            <h2>Outras Receitas</h2>
+            <CarouselRecommendations />
           </div>
         </div>
       ))}

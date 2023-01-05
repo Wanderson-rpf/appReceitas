@@ -15,9 +15,11 @@ function Recipes() {
   useEffect(() => {
     if (location.pathname.includes("meals")) {
       dispacth(fetchRecipesMeals());
+      dispacth(fetchRecipesDrinks());
       setPage("meals");
     } else if (location.pathname.includes("drinks")) {
       dispacth(fetchRecipesDrinks());
+      dispacth(fetchRecipesMeals());
       setPage("drinks");
     }
   }, []);

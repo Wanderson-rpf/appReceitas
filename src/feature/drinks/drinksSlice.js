@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { recipesDrinksApi, requestCategoryDrinks } from "../../services/Api";
+import { fetchRecipesMeals } from "../meals/mealsSlice";
 
 export const fetchCategoryDrinks = createAsyncThunk(
   'drinks/fetchCategories',
@@ -37,12 +38,17 @@ export const drinksSlice = createSlice({
     // Category Drinks
     builder.addCase(fetchCategoryDrinks.fulfilled, (state, action) => {
       state.categoriesRecipeDrinks = action.payload;
-    })
+    });
 
     // Recipes Drinks
     builder.addCase(fetchRecipesDrinks.fulfilled, (state, action) => {
       state.recipeDrinks = action.payload;
-    })
+    });
+
+    // Recommended meals
+    builder.addCase(fetchRecipesMeals.fulfilled, (state, action) => {
+      state.recommendationsMeals = action.payload;
+    });
   }
 });
 
