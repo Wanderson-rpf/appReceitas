@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import ButtonPageUp from "./ButtonPageUp";
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import RecipeCard from "./RecipeCard";
 
 function CarouselRecommendations() {
   const location = useLocation();
-  const navigate = useNavigate();
   const [isMeal, setIsMeal] = useState(false);
   const recommendedDrinks = useSelector(
     (state) => state.meals.recommendationsDrinks
@@ -50,27 +50,11 @@ function CarouselRecommendations() {
       >
       {recommendedRecipe().map((recipe, index) => (
         <SwiperSlide key={index} className="slide-content">
-          <div className="card-wrapper">
-            <div className="card">
-              <div className="image-content">
-                <span className="overlay"></span>
-                <div className="card-image">
-                  <img
-                    className="card-img"  
-                    src={isMeal ? recipe.strDrinkThumb : recipe.strMealThumb}
-                    alt={isMeal ? recipe.strDrink : recipe.strMeal}
-                  />
-                </div>
-              </div>
-              <div className="card-content">
-                <h3>{isMeal ? recipe.strDrink : recipe.strMeal}</h3>
-                <p>{recipe.strCategory}</p>
-                <Link to={`/meals/${recipe.idMeal}`}>
-                  <p>Ir para receita</p>
-                </Link>
-              </div>
-            </div>
-          </div>
+          <RecipeCard 
+          key={index}
+          recipe={recipe}
+          page={ isMeal ? "/drinks" : "/meals" }
+        />
         </SwiperSlide>
       ))}
     </Swiper>
