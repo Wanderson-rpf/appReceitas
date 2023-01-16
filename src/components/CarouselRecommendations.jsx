@@ -44,6 +44,7 @@ function CarouselRecommendations() {
         spaceBetween={5}
         slidesPerView={2}
         fadeEffect={true}
+        grabCursor={true}
         pagination={{ clickable: true, dynamicBullets: true }}
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log('slide change')}

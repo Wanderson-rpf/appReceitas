@@ -296,7 +296,6 @@ body {
   background-color: #fff;
 }
 
-
 .card-image {
   @apply relative h-32 w-32 rounded-full bg-white p-1;
 }
