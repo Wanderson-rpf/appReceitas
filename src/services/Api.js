@@ -22,6 +22,18 @@ export const requestCategoryDrinks = async () => {
 };
 // <----------------- Request APIs de categoria ----------------->
 
+// <----------------- Request APIs for ID ----------------->
+export const requestMealsId = async (idRecipeMeal) => {
+  const ENDPOINT = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idRecipeMeal}`;
+  return assistantMeals(ENDPOINT);
+};
+
+export const requestDrinkIds = async (idRecipeDrink) => {
+  const ENDPOINT = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${idRecipeDrink}`;
+  return assistantDrinks(ENDPOINT);
+};
+// <----------------- Request APIs for ID ----------------->
+
 // <----------------- Request APIs de Search ----------------->
 export const searchRecipesMealsName = async (searchName) => {
   const ENDPOINT = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchName.search}`;

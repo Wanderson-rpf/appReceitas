@@ -1,21 +1,28 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useParams } from "react-router-dom";
 import CarouselRecommendations from "../components/CarouselRecommendations";
 import Header from "../components/Header";
+import { fetchSelectedDrink } from "../feature/drinks/drinksSlice";
+import { fetchSelectedMeal } from "../feature/meals/mealsSlice";
 
 function RecipeDetail() {
+  const dispacth = useDispatch();
   const location = useLocation();
+  const mealsOrDrinkId = useParams(':id');
+  const { id } = mealsOrDrinkId;
   const mealsRecipe = useSelector((state) => state.meals.meals);
   const drinksRecipe = useSelector((state) => state.drinks.drinks);
   const [recipeSelected, setRecipeSelected] = useState([]);
   const [isMeal, setIsMeal] = useState(false);
 
   useEffect(() => {
-    if (location.pathname.includes('meals')) {
+    if (location.pathname === `/meals/${id}`) {
+      dispacth(fetchSelectedMeal(id));
       setRecipeSelected(mealsRecipe);
       setIsMeal(true);
-    } else if (location.pathname.includes('drinks')) {
+    } else if (location.pathname === `/drinks/${id}`) {
+      dispacth(fetchSelectedDrink(id));
       setRecipeSelected(drinksRecipe);
       setIsMeal(false);
     } else {
@@ -23,24 +30,24 @@ function RecipeDetail() {
     }
   }, []);
 
-  const verifyId = () => {
-    let idRecipe;
-    if (location.pathname.includes('meals')) {
-      idRecipe = recipeSelected[0].idMeal;
-    } else if (location.pathname.includes('drinks')) {
-      idRecipe = recipeSelected[0].idDrink;
+  const verifyTypeRecipe = () => {
+    let recipes;
+    if (location.pathname.includes("meals")) {
+      recipes = mealsRecipe;
+    } else if (location.pathname.includes("drinks")) {
+      recipes = drinksRecipe;
     }
-    return idRecipe;
+    return recipes;
   };
 
-  const ingredientsList = recipeSelected.map((element) => Object.entries(element)
+  const ingredientsList = verifyTypeRecipe().map((element) => Object.entries(element)
   .filter((elem) => elem[0].includes('strIngredient')
   && elem[1] !== ''
   && elem[1] !== ' '
   && elem[1] !== null)
   .map((ingredients) => ingredients[1])).flat();
 
-const measureList = recipeSelected.map((element) => Object.entries(element)
+const measureList = verifyTypeRecipe().map((element) => Object.entries(element)
   .filter((elem) => elem[0].includes('strMeasure')
   && elem[1] !== ''
   && elem[1] !== ' '
@@ -50,8 +57,8 @@ const measureList = recipeSelected.map((element) => Object.entries(element)
   return (
     <div>
       <Header />
-      { recipeSelected.map((recipe) => (
-        <div key={verifyId}>
+      { verifyTypeRecipe().map((recipe) => (
+        <div key={id}>
           <div>
             <img src={ isMeal ? recipe.strMealThumb : recipe.strDrinkThumb } alt="thumb recipe" />
           </div>

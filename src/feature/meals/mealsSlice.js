@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { 
   recipesMealsApi, 
   requestCategoryMeals, 
+  requestMealsId, 
   searchRecipesMealsFirstLetter, 
   searchRecipesMealsIngredient, 
   searchRecipesMealsName,  
@@ -14,7 +15,7 @@ export const fetchSearchMealsName = createAsyncThunk(
     const responseApi = await searchRecipesMealsName(search);
     return responseApi;
   }
-)
+);
 
 export const fetchSearchMealsIngredient = createAsyncThunk(
   'meals/fetchSearchMealsIngredient',
@@ -22,7 +23,7 @@ export const fetchSearchMealsIngredient = createAsyncThunk(
     const responseApi = await searchRecipesMealsIngredient(search);
     return responseApi;
   }
-)
+);
 
 export const fetchSearchMealsFirstLetter = createAsyncThunk(
   'meals/fetchSearchMealsFirstLetter',
@@ -30,7 +31,7 @@ export const fetchSearchMealsFirstLetter = createAsyncThunk(
     const responseApi = await searchRecipesMealsFirstLetter(search);
     return responseApi;
   }
-)
+);
 
 export const fetchCategoryMeals = createAsyncThunk(
   'meals/fetchCategoryMeals',
@@ -38,7 +39,7 @@ export const fetchCategoryMeals = createAsyncThunk(
     const responseApi = await requestCategoryMeals();
     return responseApi;
   }
-)
+);
 
 export const fetchRecipesMeals = createAsyncThunk(
   'meals/fetchRecipesMeals',
@@ -46,7 +47,15 @@ export const fetchRecipesMeals = createAsyncThunk(
     const responseApi = await recipesMealsApi();
     return responseApi;
   }
-)
+);
+
+export const fetchSelectedMeal = createAsyncThunk(
+  'meals/fetchSelectedMeal',
+  async (id) => {
+    const responseApi = await requestMealsId(id);
+    return responseApi;
+  }
+);
 
 const initialState = {
   meals: [],
@@ -59,11 +68,7 @@ const initialState = {
 export const mealsSlice = createSlice({
   name: 'meals',
   initialState,
-  reducers: {
-    selectMealsRecipe : (state, action) => {
-      state.meals = action.payload
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     // Search Meals for Name
     builder.addCase(fetchSearchMealsName.fulfilled, (state, action) => {
@@ -93,9 +98,13 @@ export const mealsSlice = createSlice({
     // Recommended drinks
     builder.addCase(fetchRecipesDrinks.fulfilled, (state, action) => {
       state.recommendationsDrinks = action.payload;
-    })
+    });
+
+    // Meal Selected
+    builder.addCase(fetchSelectedMeal.fulfilled, (state, action) => {
+      state.meals = action.payload;
+    });
   }
 });
 
-export const { selectMealsRecipe } = mealsSlice.actions;
 export const mealsReducer = mealsSlice.reducer;

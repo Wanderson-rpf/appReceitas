@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { 
   recipesDrinksApi, 
   requestCategoryDrinks, 
+  requestDrinkIds, 
   searchRecipesDrinksFirstLetter, 
   searchRecipesDrinksIngredient, 
   searchRecipesDrinksName 
@@ -14,7 +15,7 @@ export const fetchSearchDrinksName = createAsyncThunk(
     const responseApi = await searchRecipesDrinksName(search);
     return responseApi;
   }
-)
+);
 
 export const fetchSearchDrinksIngredient = createAsyncThunk(
   'drinks/fetchSearchDrinksIngredient',
@@ -22,7 +23,7 @@ export const fetchSearchDrinksIngredient = createAsyncThunk(
     const responseApi = await searchRecipesDrinksIngredient(search);
     return responseApi;
   }
-)
+);
 
 export const fetchSearchDrinksFirstLetter = createAsyncThunk(
   'drinks/fetchSearchDrinksFirstLetter',
@@ -30,7 +31,7 @@ export const fetchSearchDrinksFirstLetter = createAsyncThunk(
     const responseApi = await searchRecipesDrinksFirstLetter(search);
     return responseApi;
   }
-)
+);
 
 export const fetchCategoryDrinks = createAsyncThunk(
   'drinks/fetchCategories',
@@ -38,7 +39,7 @@ export const fetchCategoryDrinks = createAsyncThunk(
     const responseApi = await requestCategoryDrinks();
     return responseApi;
   }
-)
+);
 
 export const fetchRecipesDrinks = createAsyncThunk(
   'drinks/fetchRecipeDrinks',
@@ -46,7 +47,15 @@ export const fetchRecipesDrinks = createAsyncThunk(
     const responseApi = await recipesDrinksApi();
     return responseApi;
   }
-)
+);
+
+export const fetchSelectedDrink = createAsyncThunk(
+  'drinks/fetchSelectedDrink',
+  async (id) => {
+    const responseApi = await requestDrinkIds(id);
+    return responseApi;
+  }
+);
 
 const initialState = {
   drinks: [],
@@ -59,11 +68,7 @@ const initialState = {
 export const drinksSlice = createSlice({
   name: 'drinks',
   initialState,
-  reducers: {
-    selectDrinksRecipe : (state, action) => {
-      state.drinks = action.payload
-    }
-  },
+  reducers: {},
   extraReducers: (builder) => {
         // Search Drinks for Name
         builder.addCase(fetchSearchDrinksName.fulfilled, (state, action) => {
@@ -93,6 +98,10 @@ export const drinksSlice = createSlice({
     // Recommended meals
     builder.addCase(fetchRecipesMeals.fulfilled, (state, action) => {
       state.recommendationsMeals = action.payload;
+    });
+
+    builder.addCase(fetchSelectedDrink.fulfilled, (state, action) => {
+      state.drinks = action.payload;
     });
   }
 });
