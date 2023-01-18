@@ -6,6 +6,7 @@ import CarouselRecommendations from "../components/CarouselRecommendations";
 import Header from "../components/Header";
 import { fetchSelectedDrink } from "../feature/drinks/drinksSlice";
 import { fetchSelectedMeal } from "../feature/meals/mealsSlice";
+import { listIngredients, listMeasure } from "../helpers/FunctionsAssistants";
 
 function RecipeDetail() {
   const dispacth = useDispatch();
@@ -38,19 +39,8 @@ function RecipeDetail() {
     return recipes;
   };
 
-  const ingredientsList = verifyTypeRecipe().map((element) => Object.entries(element)
-  .filter((elem) => elem[0].includes('strIngredient')
-  && elem[1] !== ''
-  && elem[1] !== ' '
-  && elem[1] !== null)
-  .map((ingredients) => ingredients[1])).flat();
-
-const measureList = verifyTypeRecipe().map((element) => Object.entries(element)
-  .filter((elem) => elem[0].includes('strMeasure')
-  && elem[1] !== ''
-  && elem[1] !== ' '
-  && elem[1] !== null)
-  .map((ingredients) => ingredients[1])).flat();
+  const ingredientsList = listIngredients(verifyTypeRecipe())
+  const measureList = listMeasure(verifyTypeRecipe())
 
   return (
     <div>
@@ -69,7 +59,7 @@ const measureList = verifyTypeRecipe().map((element) => Object.entries(element)
             <h2>Ingredientes</h2>
             { ingredientsList.map((ingredient, index) => (
               <ul key={index}>
-                <li>{`${ingredient} - ${measureList[index]}`}</li>
+                <li>{`${measureList[index]} - ${ingredient}`}</li>
               </ul>
             ))}
           </div>
