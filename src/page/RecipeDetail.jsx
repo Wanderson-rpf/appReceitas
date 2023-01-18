@@ -13,17 +13,14 @@ function RecipeDetail() {
   const { id } = mealsOrDrinkId;
   const mealsRecipe = useSelector((state) => state.meals.meals);
   const drinksRecipe = useSelector((state) => state.drinks.drinks);
-  const [recipeSelected, setRecipeSelected] = useState([]);
   const [isMeal, setIsMeal] = useState(false);
 
   useEffect(() => {
     if (location.pathname === `/meals/${id}`) {
       dispacth(fetchSelectedMeal(id));
-      setRecipeSelected(mealsRecipe);
       setIsMeal(true);
     } else if (location.pathname === `/drinks/${id}`) {
       dispacth(fetchSelectedDrink(id));
-      setRecipeSelected(drinksRecipe);
       setIsMeal(false);
     } else {
       console.log('Pagina não encontrada.');

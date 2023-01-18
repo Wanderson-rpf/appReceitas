@@ -11,13 +11,23 @@ const assistantDrinks = async (endpoint) => {
 };
 
 // <----------------- Request APIs de categoria ----------------->
-export const requestCategoryMeals = async () => {
+export const requestAllCategoryMeals = async () => {
   const ENDPOINT = 'https://www.themealdb.com/api/json/v1/1/list.php?c=list';
   return assistantMeals(ENDPOINT);
 };
 
-export const requestCategoryDrinks = async () => {
+export const requestCategoryMeals = async (category) => {
+  const ENDPOINT = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`;
+  return assistantMeals(ENDPOINT);
+};
+
+export const requestAllCategoryDrinks = async () => {
   const ENDPOINT = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list';
+  return assistantDrinks(ENDPOINT);
+};
+
+export const requestCategoryDrinks = async (category) => {
+  const ENDPOINT = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`;
   return assistantDrinks(ENDPOINT);
 };
 // <----------------- Request APIs de categoria ----------------->
