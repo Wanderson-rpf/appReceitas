@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 html {
-  @apply max-w-sm max-h-screen scroll-smooth;
+  @apply max-w-xs max-h-screen scroll-smooth;
 }
 
 body {
@@ -253,3 +253,55 @@ body {
   @apply border border-clrMain-100 px-3 rounded-md mt-2;
 }
 /* <------------------ Recipes ------------------ > */
+
+/* <------------------ Carousel ------------------ > */
+.slide-container {
+  @apply w-screen p-1;
+}
+
+.slide-content {
+  @apply mx-1 overflow-hidden;
+}
+
+.card {
+  @apply rounded-3xl border-2 border-clrMain-50;
+}
+
+.image-content,
+.card-content {
+  @apply flex flex-col items-center py-3;
+}
+
+.image-content {
+  @apply relative gap-x-1 py-4;
+}
+
+.overlay {
+  @apply absolute left-0 top-0 h-full w-full bg-clrMain-50 rounded-t-3xl rounded-bl-3xl;
+}
+
+.overlay::before,
+.overlay::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: -40px;
+  height: 40px;
+  width: 40px;
+  background-color: #FF6C4D;
+}
+
+.overlay::after {
+  border-radius: 0 24px 0 0;
+  background-color: #fff;
+}
+
+.card-image {
+  @apply relative h-32 w-32 rounded-full bg-white p-1;
+}
+
+.card-image .card-img {
+  @apply relative h-full w-full object-cover rounded-full border-4 border-clrMain-50;
+}
+
+/* <------------------ Carousel ------------------ > */

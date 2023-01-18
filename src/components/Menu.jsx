@@ -17,12 +17,6 @@ function Menu() {
             </Link>
           </li>
           <li>
-            <Link to="/profile" className="list-items">
-              <AiOutlineUser className="icon-menu" />
-              <p>Usuário</p>
-            </Link>
-          </li>
-          <li>
             <Link to="/meals" className="list-items">
               <TbMeat className="icon-menu" />
               <p>Pratos</p>
@@ -44,6 +38,12 @@ function Menu() {
             <Link to="/done-recipes" className="list-items">
               <AiOutlineCheckCircle className="icon-menu" />
               <p>Concluídas</p>
+            </Link>
+          </li>
+          <li>
+            <Link to="/profile" className="list-items">
+              <AiOutlineUser className="icon-menu" />
+              <p>Usuário</p>
             </Link>
           </li>
           <li className="opt-logout">
