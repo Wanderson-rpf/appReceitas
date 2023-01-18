@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
+import ButtonStartRecipe from "../components/ButtonStartRecipe";
 import CarouselRecommendations from "../components/CarouselRecommendations";
 import Header from "../components/Header";
 import { fetchSelectedDrink } from "../feature/drinks/drinksSlice";
@@ -86,7 +87,10 @@ const measureList = verifyTypeRecipe().map((element) => Object.entries(element)
             }
           </div>
           <div>
-            <h2>Outras Receitas</h2>
+            <ButtonStartRecipe />
+          </div>
+          <div>
+            <h2>Recomendações</h2>
             <CarouselRecommendations />
           </div>
         </div>
