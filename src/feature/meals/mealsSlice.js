@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { 
   recipesMealsApi, 
+  requestAllCategoryMeals, 
   requestCategoryMeals, 
   requestMealsId, 
   searchRecipesMealsFirstLetter, 
@@ -33,10 +34,18 @@ export const fetchSearchMealsFirstLetter = createAsyncThunk(
   }
 );
 
+export const fetchAllCategoryMeals = createAsyncThunk(
+  'meals/fetchAllCategoryMeals',
+  async () => {
+    const responseApi = await requestAllCategoryMeals();
+    return responseApi;
+  }
+);
+
 export const fetchCategoryMeals = createAsyncThunk(
   'meals/fetchCategoryMeals',
-  async () => {
-    const responseApi = await requestCategoryMeals();
+  async (category) => {
+    const responseApi = await requestCategoryMeals(category);
     return responseApi;
   }
 );
@@ -58,7 +67,7 @@ export const fetchSelectedMeal = createAsyncThunk(
 );
 
 const initialState = {
-  meals: [],
+  meal: [],
   categoriesRecipeMeals: [],
   error: null,
   recipeMeals: [],
@@ -86,9 +95,14 @@ export const mealsSlice = createSlice({
     });
 
     // Categories Meals
-    builder.addCase(fetchCategoryMeals.fulfilled, (state, action) => {
+    builder.addCase(fetchAllCategoryMeals.fulfilled, (state, action) => {
       state.categoriesRecipeMeals = action.payload;
     });
+
+        // Categories Filter Meals
+        builder.addCase(fetchCategoryMeals.fulfilled, (state, action) => {
+          state.recipeMeals = action.payload;
+        });
 
     // Recipes Meals
     builder.addCase(fetchRecipesMeals.fulfilled, (state, action) => {
@@ -102,7 +116,7 @@ export const mealsSlice = createSlice({
 
     // Meal Selected
     builder.addCase(fetchSelectedMeal.fulfilled, (state, action) => {
-      state.meals = action.payload;
+      state.meal = action.payload;
     });
   }
 });

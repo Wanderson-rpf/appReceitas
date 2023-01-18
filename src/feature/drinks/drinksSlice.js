@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { 
   recipesDrinksApi, 
+  requestAllCategoryDrinks, 
   requestCategoryDrinks, 
   requestDrinkIds, 
   searchRecipesDrinksFirstLetter, 
@@ -33,10 +34,18 @@ export const fetchSearchDrinksFirstLetter = createAsyncThunk(
   }
 );
 
+export const fetchAllCategoryDrinks = createAsyncThunk(
+  'drinks/fetchAllCategoryDrinks',
+  async () => {
+    const responseApi = await requestAllCategoryDrinks();
+    return responseApi;
+  }
+);
+
 export const fetchCategoryDrinks = createAsyncThunk(
   'drinks/fetchCategories',
-  async () => {
-    const responseApi = await requestCategoryDrinks();
+  async (category) => {
+    const responseApi = await requestCategoryDrinks(category);
     return responseApi;
   }
 );
@@ -58,7 +67,7 @@ export const fetchSelectedDrink = createAsyncThunk(
 );
 
 const initialState = {
-  drinks: [],
+  drink: [],
   categoriesRecipeDrinks: [],
   error: null,
   recipeDrinks: [],
@@ -70,25 +79,30 @@ export const drinksSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-        // Search Drinks for Name
-        builder.addCase(fetchSearchDrinksName.fulfilled, (state, action) => {
-          state.recipeDrinks = action.payload;
-        });
-    
-        // Search Drinks for Ingredient
-        builder.addCase(fetchSearchDrinksIngredient.fulfilled, (state, action) => {
-          state.recipeDrinks = action.payload;
-        });
-    
-        // Search Drinks for First Letter
-        builder.addCase(fetchSearchDrinksFirstLetter.fulfilled, (state, action) => {
-          state.recipeDrinks = action.payload;
-        });
+    // Search Drinks for Name
+    builder.addCase(fetchSearchDrinksName.fulfilled, (state, action) => {
+      state.recipeDrinks = action.payload;
+    });
+
+    // Search Drinks for Ingredient
+    builder.addCase(fetchSearchDrinksIngredient.fulfilled, (state, action) => {
+      state.recipeDrinks = action.payload;
+    });
+
+    // Search Drinks for First Letter
+    builder.addCase(fetchSearchDrinksFirstLetter.fulfilled, (state, action) => {
+      state.recipeDrinks = action.payload;
+    });
 
     // Category Drinks
-    builder.addCase(fetchCategoryDrinks.fulfilled, (state, action) => {
+    builder.addCase(fetchAllCategoryDrinks.fulfilled, (state, action) => {
       state.categoriesRecipeDrinks = action.payload;
     });
+
+        // Category Filter Drinks
+        builder.addCase(fetchCategoryDrinks.fulfilled, (state, action) => {
+          state.recipeDrinks = action.payload;
+        });
 
     // Recipes Drinks
     builder.addCase(fetchRecipesDrinks.fulfilled, (state, action) => {
@@ -101,7 +115,7 @@ export const drinksSlice = createSlice({
     });
 
     builder.addCase(fetchSelectedDrink.fulfilled, (state, action) => {
-      state.drinks = action.payload;
+      state.drink = action.payload;
     });
   }
 });

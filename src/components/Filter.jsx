@@ -2,8 +2,14 @@ import React, { useEffect, useState } from "react";
 import { MdOutlineFilterAlt, MdFilterAlt } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { fetchCategoryDrinks } from "../feature/drinks/drinksSlice";
-import { fetchCategoryMeals } from "../feature/meals/mealsSlice";
+import {
+  fetchAllCategoryDrinks,
+  fetchCategoryDrinks,
+} from "../feature/drinks/drinksSlice";
+import {
+  fetchAllCategoryMeals,
+  fetchCategoryMeals,
+} from "../feature/meals/mealsSlice";
 
 function Filter() {
   const dispatch = useDispatch();
@@ -23,11 +29,21 @@ function Filter() {
 
   const verifyFilterPage = () => {
     if (location.pathname.includes("meals")) {
-      dispatch(fetchCategoryMeals());
+      dispatch(fetchAllCategoryMeals());
       setFilter(mealsCategory);
     } else if (location.pathname.includes("drinks")) {
-      dispatch(fetchCategoryDrinks());
+      dispatch(fetchAllCategoryDrinks());
       setFilter(drinksCategory);
+    }
+  };
+
+  const handleFilterCategory = ({ target }) => {
+    const { id } = target;
+    console.log(id);
+    if (location.pathname.includes("meals")) {
+      dispatch(fetchCategoryMeals(id));
+    } else if (location.pathname.includes("drinks")) {
+      dispatch(fetchCategoryDrinks(id));
     }
   };
 
@@ -47,7 +63,12 @@ function Filter() {
       {filterActive && (
         <div className="filters">
           {filter.map((category, index) => (
-            <p key={index} className="category">
+            <p
+              key={index}
+              className="category"
+              id={category.strCategory}
+              onClick={handleFilterCategory}
+            >
               {category.strCategory}
             </p>
           ))}
