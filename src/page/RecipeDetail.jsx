@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
+import ButtonFavorite from "../components/ButtonFavorite";
+import ButtonShared from "../components/ButtonShared";
+import ButtonStartRecipe from "../components/ButtonStartRecipe";
 import CarouselRecommendations from "../components/CarouselRecommendations";
 import Header from "../components/Header";
 import { fetchSelectedDrink } from "../feature/drinks/drinksSlice";
 import { fetchSelectedMeal } from "../feature/meals/mealsSlice";
+import { listIngredients, listMeasure } from "../helpers/FunctionsAssistants";
 
 function RecipeDetail() {
   const dispacth = useDispatch();
   const location = useLocation();
   const mealsOrDrinkId = useParams(':id');
   const { id } = mealsOrDrinkId;
-  const mealsRecipe = useSelector((state) => state.meals.meals);
-  const drinksRecipe = useSelector((state) => state.drinks.drinks);
+  const mealsRecipe = useSelector((state) => state.meals.meal);
+  const drinksRecipe = useSelector((state) => state.drinks.drink);
   const [isMeal, setIsMeal] = useState(false);
 
   useEffect(() => {
@@ -37,19 +41,8 @@ function RecipeDetail() {
     return recipes;
   };
 
-  const ingredientsList = verifyTypeRecipe().map((element) => Object.entries(element)
-  .filter((elem) => elem[0].includes('strIngredient')
-  && elem[1] !== ''
-  && elem[1] !== ' '
-  && elem[1] !== null)
-  .map((ingredients) => ingredients[1])).flat();
-
-const measureList = verifyTypeRecipe().map((element) => Object.entries(element)
-  .filter((elem) => elem[0].includes('strMeasure')
-  && elem[1] !== ''
-  && elem[1] !== ' '
-  && elem[1] !== null)
-  .map((ingredients) => ingredients[1])).flat();
+  const ingredientsList = listIngredients(verifyTypeRecipe())
+  const measureList = listMeasure(verifyTypeRecipe())
 
   return (
     <div>
@@ -65,10 +58,14 @@ const measureList = verifyTypeRecipe().map((element) => Object.entries(element)
             { !isMeal && (<p>{ recipe.strAlcoholic }</p>) }
           </div>
           <div>
+            <ButtonShared />
+            <ButtonFavorite recipeProp={ verifyTypeRecipe()[0] } />
+          </div>
+          <div>
             <h2>Ingredientes</h2>
             { ingredientsList.map((ingredient, index) => (
               <ul key={index}>
-                <li>{`${ingredient} - ${measureList[index]}`}</li>
+                <li>{`${measureList[index]} - ${ingredient}`}</li>
               </ul>
             ))}
           </div>
@@ -86,7 +83,10 @@ const measureList = verifyTypeRecipe().map((element) => Object.entries(element)
             }
           </div>
           <div>
-            <h2>Outras Receitas</h2>
+            <ButtonStartRecipe />
+          </div>
+          <div>
+            <h2>Recomendações</h2>
             <CarouselRecommendations />
           </div>
         </div>
