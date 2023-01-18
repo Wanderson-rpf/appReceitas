@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
+import ButtonFavorite from "../components/ButtonFavorite";
 import ButtonShared from "../components/ButtonShared";
 import ButtonStartRecipe from "../components/ButtonStartRecipe";
 import CarouselRecommendations from "../components/CarouselRecommendations";
@@ -58,6 +59,7 @@ function RecipeDetail() {
           </div>
           <div>
             <ButtonShared />
+            <ButtonFavorite recipeProp={ verifyTypeRecipe()[0] } />
           </div>
           <div>
             <h2>Ingredientes</h2>
