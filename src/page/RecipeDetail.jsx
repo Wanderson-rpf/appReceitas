@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
+import ButtonShared from "../components/ButtonShared";
 import ButtonStartRecipe from "../components/ButtonStartRecipe";
 import CarouselRecommendations from "../components/CarouselRecommendations";
 import Header from "../components/Header";
@@ -54,6 +55,9 @@ function RecipeDetail() {
             <h1>{ isMeal ? recipe.strMeal : recipe.strDrink }</h1>
             <p>{ recipe.strCategory }</p>
             { !isMeal && (<p>{ recipe.strAlcoholic }</p>) }
+          </div>
+          <div>
+            <ButtonShared />
           </div>
           <div>
             <h2>Ingredientes</h2>
