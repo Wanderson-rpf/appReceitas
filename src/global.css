@@ -27,21 +27,7 @@ body {
 }
 
 .btn-home {
-  @apply focus:outline-none
-  text-black
-  bg-yellow-400
-  hover:bg-yellow-500
-  focus:ring-4
-  focus:ring-yellow-300
-  font-medium
-  rounded-lg
-  text-sm
-  px-5
-  py-2.5
-  mr-2
-  mb-2
-  dark:focus:ring-yellow-900
-  w-40
+  @apply focus:outline-none text-black bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900 w-40
 }
 
 .form-container {
@@ -49,35 +35,11 @@ body {
 }
 
 .input-login {
-  @apply bg-gray-50 
-  border 
-  border-white
-  text-gray-900
-  text-sm 
-  rounded-lg
-  focus:border-white
-  block w-full
-  p-2.5
-  dark:bg-white bg-opacity-50
-  dark:border-gray-400
-  dark:placeholder-gray-400
+  @apply bg-gray-50 border border-white text-gray-900 text-sm rounded-lg focus:border-white block w-full p-2.5 dark:bg-white bg-opacity-50 dark:border-gray-400 dark:placeholder-gray-400
 }
 
 .btn-login {
-  @apply focus:outline-none
-  text-black
-  bg-yellow-400
-  hover:bg-yellow-500
-  focus:ring-4
-  focus:ring-yellow-300
-  font-medium
-  rounded-lg
-  text-sm
-  px-5
-  py-2.5
-  mr-2
-  mb-2
-  dark:focus:ring-yellow-900
+  @apply focus:outline-none text-black bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900
 }
 
 .container-header {
@@ -210,7 +172,6 @@ body {
 .icon-page-up {
   @apply text-white w-9 h-9;
 }
-/* <------------------ Button page up ------------------ > */
 
 /* <------------------ Recipes ------------------ > */
 .container-recipe {
@@ -252,7 +213,6 @@ body {
 .btn-go-recipe {
   @apply border border-clrMain-100 px-3 rounded-md mt-2;
 }
-/* <------------------ Recipes ------------------ > */
 
 /* <------------------ Carousel ------------------ > */
 .slide-container {
@@ -304,4 +264,4 @@ body {
   @apply relative h-full w-full object-cover rounded-full border-4 border-clrMain-50;
 }
 
-/* <------------------ Carousel ------------------ > */
+/* <------------------  ------------------ > */

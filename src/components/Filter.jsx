@@ -39,7 +39,6 @@ function Filter() {
 
   const handleFilterCategory = ({ target }) => {
     const { id } = target;
-    console.log(id);
     if (location.pathname.includes("meals")) {
       dispatch(fetchCategoryMeals(id));
     } else if (location.pathname.includes("drinks")) {
