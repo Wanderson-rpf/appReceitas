@@ -1,6 +1,36 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { recipesDrinksApi, requestCategoryDrinks } from "../../services/Api";
+import { 
+  recipesDrinksApi, 
+  requestCategoryDrinks, 
+  searchRecipesDrinksFirstLetter, 
+  searchRecipesDrinksIngredient, 
+  searchRecipesDrinksName 
+} from "../../services/Api";
 import { fetchRecipesMeals } from "../meals/mealsSlice";
+
+export const fetchSearchDrinksName = createAsyncThunk(
+  'drinks/fetchSearchDrinksName',
+  async (search) => {
+    const responseApi = await searchRecipesDrinksName(search);
+    return responseApi;
+  }
+)
+
+export const fetchSearchDrinksIngredient = createAsyncThunk(
+  'drinks/fetchSearchDrinksIngredient',
+  async (search) => {
+    const responseApi = await searchRecipesDrinksIngredient(search);
+    return responseApi;
+  }
+)
+
+export const fetchSearchDrinksFirstLetter = createAsyncThunk(
+  'drinks/fetchSearchDrinksFirstLetter',
+  async (search) => {
+    const responseApi = await searchRecipesDrinksFirstLetter(search);
+    return responseApi;
+  }
+)
 
 export const fetchCategoryDrinks = createAsyncThunk(
   'drinks/fetchCategories',
@@ -35,6 +65,21 @@ export const drinksSlice = createSlice({
     }
   },
   extraReducers: (builder) => {
+        // Search Drinks for Name
+        builder.addCase(fetchSearchDrinksName.fulfilled, (state, action) => {
+          state.recipeDrinks = action.payload;
+        });
+    
+        // Search Drinks for Ingredient
+        builder.addCase(fetchSearchDrinksIngredient.fulfilled, (state, action) => {
+          state.recipeDrinks = action.payload;
+        });
+    
+        // Search Drinks for First Letter
+        builder.addCase(fetchSearchDrinksFirstLetter.fulfilled, (state, action) => {
+          state.recipeDrinks = action.payload;
+        });
+
     // Category Drinks
     builder.addCase(fetchCategoryDrinks.fulfilled, (state, action) => {
       state.categoriesRecipeDrinks = action.payload;

@@ -52,11 +52,11 @@ function RecipeCard({ recipe, page}) {
     }
   };
 
-  console.log('Pagina', page);
-  console.log(recipe);
-  console.log(recipe[idVerify()]);
-  console.log(recipe[thumbRecipe()]);
-  console.log(recipe[strNameRecipe()]);
+  // console.log('Pagina', page);
+  // console.log(recipe);
+  // console.log(recipe[idVerify()]);
+  // console.log(recipe[thumbRecipe()]);
+  // console.log(recipe[strNameRecipe()]);
 
   return (
     <div>
