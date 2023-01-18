@@ -11,8 +11,8 @@ function RecipeDetail() {
   const location = useLocation();
   const mealsOrDrinkId = useParams(':id');
   const { id } = mealsOrDrinkId;
-  const mealsRecipe = useSelector((state) => state.meals.meals);
-  const drinksRecipe = useSelector((state) => state.drinks.drinks);
+  const mealsRecipe = useSelector((state) => state.meals.meal);
+  const drinksRecipe = useSelector((state) => state.drinks.drink);
   const [isMeal, setIsMeal] = useState(false);
 
   useEffect(() => {
