@@ -9,28 +9,14 @@ function ButtonFavorite({recipeProp}) {
 
   const verifyFavorite = () => {
     const isFavorite = favoriteRecipe
-    .some((recipe) => recipe.id === recipeProp.idMeals || recipe.id === recipeProp.idDrinks);
+    .some((recipe) => recipe.id === recipeProp.idMeal || recipe.id === recipeProp.idDrink);
     return isFavorite;
   };
 
-  useEffect (() => {
-    setFavorite(verifyFavorite());
-  }, []);
-
-  const handleFavorite = () => {
-    if (verifyFavorite()) {
-      let arrayFavoriteRecipe;
+  const favoriteSelected = () => {
+    let newFavorite;
       if (location.pathname.includes('meals')) {
-        arrayFavoriteRecipe = favoriteRecipe.filter((recipe) => recipe.id !== recipeProp.idMeals);
-      } else if (location.pathname.includes('drinks')) {
-        arrayFavoriteRecipe = favoriteRecipe.filter((recipe) => recipe.id !== recipeProp.idDrinks);
-      }
-      saveDataLocalStorage('favoriteRecipes', arrayFavoriteRecipe);
-      setFavorite(false);
-    } else {
-      let newObj;
-      if (location.pathname.includes('meals')) {
-        newObj = {
+        newFavorite = {
           id: recipeProp.idMeal,
           type: 'meal',
           nationality: recipeProp.strArea,
@@ -40,7 +26,7 @@ function ButtonFavorite({recipeProp}) {
           image: recipeProp.strMealThumb,
         };
       } else if (location.pathname.includes('drinks')){
-        newObj = {
+        newFavorite = {
           id: recipeProp.idDrink,
           type: 'drink',
           nationality: '',
@@ -50,8 +36,31 @@ function ButtonFavorite({recipeProp}) {
           image: recipeProp.strDrinkThumb,
         };
       }
-      favoriteRecipe.push(newObj);
-      saveDataLocalStorage('favoriteRecipes', favoriteRecipe);
+    favoriteRecipe.push(newFavorite);
+    saveDataLocalStorage('favoriteRecipes', favoriteRecipe);
+    return newFavorite;
+  }
+
+  const removeFavorite = () => {
+    let arrayFavoriteRecipe;
+      if (location.pathname.includes('meals')) {
+        arrayFavoriteRecipe = favoriteRecipe.filter((recipe) => recipe.id !== recipeProp.idMeal);
+      } else if (location.pathname.includes('drinks')) {
+        arrayFavoriteRecipe = favoriteRecipe.filter((recipe) => recipe.id !== recipeProp.idDrink);
+      }
+      saveDataLocalStorage('favoriteRecipes', arrayFavoriteRecipe);
+      setFavorite(false);
+  }
+
+  useEffect (() => {
+    setFavorite(verifyFavorite());
+  }, []);
+
+  const handleFavorite = () => {
+    if (verifyFavorite()) {
+      removeFavorite();
+    } else {
+      favoriteSelected();
     }
   }
 
