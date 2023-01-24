@@ -68,6 +68,7 @@ function RecipeDetail() {
               page={ isMeal ? 'meals' : 'drinks' }
               name={ isMeal ? recipe.strMeal : recipe.strDrink }
               category={ recipe.strCategory }
+              isFavorite={ false }
             />
           </div>
           <div>
