@@ -1,11 +1,12 @@
 import React from "react";
 import Header from "../components/Header";
+import Title from "../components/Title";
 
 function Profile() {
   return (
     <div>
       <Header />
-      <h1>Profile</h1>
+      <Title title={ 'Dados do Usuário' } />
     </div>
   );
 }

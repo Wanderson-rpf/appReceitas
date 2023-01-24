@@ -1,5 +1,6 @@
 import React from "react";
 import { GiHotMeal } from "react-icons/gi";
+import { AiOutlineUser } from 'react-icons/ai';
 import { ImGlass2 } from 'react-icons/im';
 import { HiHeart, HiPencilAlt } from 'react-icons/hi';
 import { useLocation } from "react-router-dom";
@@ -15,6 +16,8 @@ function Title(title) {
     icon = <HiHeart />;
   } else if (location.pathname.includes('done')) {
     icon = <HiPencilAlt />;
+  } else if (location.pathname.includes('profile')) {
+    icon = <AiOutlineUser />;
   }
 
   return (
