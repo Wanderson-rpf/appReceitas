@@ -11,13 +11,13 @@ function ButtonShared() {
   const handleCopyLink = () => {
     copy(`http://localhost:3000${location.pathname}`);
     setSharemessage(true);
-    setTimeout(() => setSharemessage(false), 2000);
+    setTimeout(() => setSharemessage(false), 2500);
   };
 
   return (
     <div>
-      <button type="button" onClick={ handleCopyLink }>
-        { sharemessage && <p>Link copied!</p> }
+      <button type="button" onClick={ handleCopyLink } className="btn-share">
+        { sharemessage && <p className="copy-share">Link copied!</p> }
         <HiShare className="icon-share" />
       </button>
     </div>
