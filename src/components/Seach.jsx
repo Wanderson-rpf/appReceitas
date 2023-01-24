@@ -34,8 +34,10 @@ function Seach() {
   const handleSearch = () => {
     if (location.pathname.includes("meals")) {
       searchMeals();
+      setSearch('');
     } else if (location.pathname.includes("drinks")) {
       searchDrinks();
+      setSearch('');
     }
   }
 

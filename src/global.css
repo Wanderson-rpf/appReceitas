@@ -122,7 +122,7 @@ body {
 }
 
 .icon-title {
-  @apply w-8;
+  @apply w-8 flex items-center justify-center;
 }
 
 .box-search {
