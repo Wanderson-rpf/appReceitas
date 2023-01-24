@@ -13,7 +13,7 @@ import { listIngredients, listMeasure } from "../helpers/FunctionsAssistants";
 function RecipeDetail() {
   const dispacth = useDispatch();
   const location = useLocation();
-  const mealsOrDrinkId = useParams(':id');
+  const mealsOrDrinkId = useParams(":id");
   const { id } = mealsOrDrinkId;
   const mealsRecipe = useSelector((state) => state.meals.meal);
   const drinksRecipe = useSelector((state) => state.drinks.drink);
@@ -27,7 +27,7 @@ function RecipeDetail() {
       dispacth(fetchSelectedDrink(id));
       setIsMeal(false);
     } else {
-      console.log('Pagina não encontrada.');
+      console.log("Pagina não encontrada.");
     }
   }, []);
 
@@ -41,46 +41,58 @@ function RecipeDetail() {
     return recipes;
   };
 
-  const ingredientsList = listIngredients(verifyTypeRecipe())
-  const measureList = listMeasure(verifyTypeRecipe())
+  const ingredientsList = listIngredients(verifyTypeRecipe());
+  const measureList = listMeasure(verifyTypeRecipe());
 
   return (
     <div>
       <Header />
-      { verifyTypeRecipe().map((recipe) => (
+      {verifyTypeRecipe().map((recipe) => (
         <div key={id}>
           <div>
-            <img src={ isMeal ? recipe.strMealThumb : recipe.strDrinkThumb } alt="thumb recipe" />
+            <img
+              src={isMeal ? recipe.strMealThumb : recipe.strDrinkThumb}
+              alt="thumb recipe"
+            />
           </div>
           <div>
-            <h1>{ isMeal ? recipe.strMeal : recipe.strDrink }</h1>
-            <p>{ recipe.strCategory }</p>
-            { !isMeal && (<p>{ recipe.strAlcoholic }</p>) }
+            <h1>{isMeal ? recipe.strMeal : recipe.strDrink}</h1>
+            <p>{recipe.strCategory}</p>
+            {!isMeal && <p>{recipe.strAlcoholic}</p>}
           </div>
           <div>
             <ButtonShared />
-            <ButtonFavorite recipeProp={ verifyTypeRecipe()[0] } />
+            <ButtonFavorite 
+              id={ isMeal ? recipe.idMeal : recipe.idDrink }
+              thumb={ isMeal ? recipe.strMealThumb : recipe.strDrinkThumb }
+              page={ isMeal ? 'meals' : 'drinks' }
+              name={ isMeal ? recipe.strMeal : recipe.strDrink }
+              category={ recipe.strCategory }
+            />
           </div>
           <div>
             <h2>Ingredientes</h2>
-            { ingredientsList.map((ingredient, index) => (
+            {ingredientsList.map((ingredient, index) => (
               <ul key={index}>
                 <li>{`${measureList[index]} - ${ingredient}`}</li>
               </ul>
             ))}
           </div>
           <div>
-              <h2>Instruções</h2>
-              { recipe.strInstructions }
+            <h2>Instruções</h2>
+            {recipe.strInstructions}
           </div>
           <div>
-            {isMeal && <iframe
-              width="96%"
-              height="315"
-              title="video-recipe"
-              src={ `https://www.youtube.com/embed/${recipe.strYoutube.split('=').pop()}` }
-            />
-            }
+            {isMeal && (
+              <iframe
+                width="96%"
+                height="315"
+                title="video-recipe"
+                src={`https://www.youtube.com/embed/${recipe.strYoutube
+                  .split("=")
+                  .pop()}`}
+              />
+            )}
           </div>
           <div>
             <ButtonStartRecipe />
