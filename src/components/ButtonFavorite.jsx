@@ -40,7 +40,7 @@ function ButtonFavorite({id, thumb, name, category, page, isFavorite}) {
   return (
     <div>
       <button type="button" onClick={handleFavorite}>
-        {iconFavorite ? <HiHeart /> : <HiOutlineHeart />}
+        {iconFavorite ? <HiHeart className="icon-favorite" /> : <HiOutlineHeart className="icon-favorite" />}
       </button>
     </div>
   );

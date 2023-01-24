@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { HiShare } from "react-icons/hi";
 import { useLocation } from "react-router-dom";
 
 const copy = require('clipboard-copy');
@@ -17,7 +18,7 @@ function ButtonShared() {
     <div>
       <button type="button" onClick={ handleCopyLink }>
         { sharemessage && <p>Link copied!</p> }
-        Share
+        <HiShare className="icon-share" />
       </button>
     </div>
   )

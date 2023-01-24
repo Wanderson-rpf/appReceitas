@@ -12,7 +12,7 @@ function ButtonPageUp() {
 
   return (
     <div>
-      {pagePositionY > 100 && (
+      {pagePositionY > 50 && (
         <div className="button-page-up">
           <a href="#header">
             <BsArrowUpCircle className="icon-page-up" />
