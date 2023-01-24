@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { HiHeart, HiOutlineHeart } from 'react-icons/hi';
 import {
   getDataLocalStorage,
@@ -28,6 +29,10 @@ function ButtonFavorite({id, thumb, name, category, page, isFavorite}) {
     const isFavorite = favoriteRecipe.some((recipe) => recipe.id === id);
     return isFavorite;
   };
+
+  useEffect(() => {
+    setIconFavorite(verifyFavorite());
+  });
 
   const handleFavorite = () => {
     if (verifyFavorite()) {
