@@ -1,4 +1,5 @@
 import React from "react";
+import { HiPencilAlt } from 'react-icons/hi';
 import { useLocation, useNavigate } from "react-router-dom";
 
 function ButtonStartRecipe() {
@@ -14,8 +15,9 @@ function ButtonStartRecipe() {
       <button
         type="button"
         onClick={handleStartRecipe}
+        className="btn-start-recipe"
       >
-        Iniciar receita
+        Iniciar receita<HiPencilAlt />
       </button>
     </div>
   )

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 html {
-  @apply max-w-xs max-h-screen scroll-smooth;
+  @apply max-w-sm scroll-smooth;
 }
 
 body {
@@ -11,7 +11,7 @@ body {
 }
 
 .login-container {
-  @apply text-white flex flex-col h-screen w-screen justify-center items-center bg-clrMain-100;
+  @apply max-w-sm text-white flex flex-col h-screen w-screen justify-center items-center bg-clrMain-100;
 }
 
 .container-intro {
@@ -43,7 +43,7 @@ body {
 }
 
 .container-header {
-  @apply bg-clrMain-100 max-h-20 w-screen flex justify-between items-center;
+  @apply bg-clrMain-100 max-w-sm max-h-20 w-screen flex justify-between items-center relative;
 }
 
 .logo-secondary {
@@ -89,7 +89,7 @@ body {
 }
 
 .container-meals {
-  @apply h-screen;
+  @apply max-w-sm h-screen;
 }
 
 .container-list-menu {
@@ -109,7 +109,7 @@ body {
 }
 
 .container-title {
-  @apply w-full flex items-center justify-center;
+  @apply max-w-sm flex items-center justify-center;
 }
 
 .box-title {
@@ -117,7 +117,7 @@ body {
 }
 
 .box-search {
-  @apply flex flex-col justify-center w-screen items-center mt-2;
+  @apply flex flex-col justify-center max-w-sm items-center mt-2;
 }
 
 .label-search {
@@ -137,7 +137,7 @@ body {
 }
 
 .container-filter {
-  @apply flex justify-center items-center gap-7 text-white text-lg w-screen;
+  @apply max-w-sm flex justify-center items-center gap-7 text-white text-lg;
 }
 
 .radio_filter {
@@ -149,7 +149,7 @@ body {
 }
 
 .container-type-filter {
-  @apply w-screen mt-3 flex flex-col justify-start;
+  @apply max-w-sm mt-3 flex flex-col justify-start;
 }
 
 .icon-filter {
@@ -175,7 +175,7 @@ body {
 
 /* <------------------ Recipes ------------------ > */
 .container-recipe {
-  @apply grid grid-cols-2 w-screen;
+  @apply grid grid-cols-2 max-w-sm;
 }
 
 .container-item-recipe {
@@ -216,7 +216,7 @@ body {
 
 /* <------------------ Carousel ------------------ > */
 .slide-container {
-  @apply w-screen p-1;
+  @apply max-w-sm p-1;
 }
 
 .slide-content {
@@ -263,5 +263,65 @@ body {
 .card-image .card-img {
   @apply relative h-full w-full object-cover rounded-full border-4 border-clrMain-50;
 }
+/* <------------------ Button share ------------------ > */
+.icon-share {
+  @apply text-3xl
+}
 
-/* <------------------  ------------------ > */
+/* <------------------ Button favorite ------------------ > */
+.icon-favorite {
+  @apply text-3xl
+}
+
+/* <------------------ Button start recipe ------------------ > */
+.btn-start-recipe {
+  @apply flex items-center justify-center gap-2 rounded-lg bg-clrMain-100 text-white font-medium fixed text-lg my-1 px-3 py-1 bottom-2 right-2 z-30;
+}
+
+/* <------------------ Page details ------------------ > */
+.thumb-details {
+  @apply rounded-bl-3xl rounded-br-3xl border-2 border-clrMain-100 relative;
+}
+
+.box-info-details {
+  transform: translateX(25%) translateY(-50%);
+  @apply flex items-center flex-col bg-orange-50 text-clrMain-100 absolute w-60 h-24 rounded-lg border-2 border-clrMain-100;
+}
+
+.box-info {
+  @apply flex items-center justify-center flex-col relative;
+}
+
+.title {
+  transform: translateX(5%) translateY(-70%);
+  @apply flex items-center justify-center rounded-lg bg-clrMain-100 text-white font-semibold absolute text-2xl my-1 px-3 py-1;
+}
+
+.category-details {
+  @apply mt-6 text-xl;
+}
+
+.container-buttons {
+  @apply flex gap-14;
+}
+
+.container-descriptions {
+  @apply mt-24 mx-2 rounded-lg border-2 border-clrMain-100 relative;
+}
+
+.box-descriptions {
+  @apply bg-orange-50 text-clrMain-100 py-6 px-3 rounded-lg;
+}
+
+.item-list:before {
+  content: '•';
+  @apply text-xl pr-2;
+}
+
+.container-video {
+  @apply flex items-center justify-center mt-10;
+}
+
+.container-carosel {
+  @apply pb-14 bg-orange-50 rounded-lg mt-16;
+}

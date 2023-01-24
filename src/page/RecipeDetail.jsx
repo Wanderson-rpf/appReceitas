@@ -48,42 +48,46 @@ function RecipeDetail() {
     <div>
       <Header />
       {verifyTypeRecipe().map((recipe) => (
-        <div key={id}>
+        <div key={id} className="container-details">
           <div>
             <img
               src={isMeal ? recipe.strMealThumb : recipe.strDrinkThumb}
               alt="thumb recipe"
+              className="thumb-details"
             />
           </div>
-          <div>
-            <h1>{isMeal ? recipe.strMeal : recipe.strDrink}</h1>
-            <p>{recipe.strCategory}</p>
-            {!isMeal && <p>{recipe.strAlcoholic}</p>}
+          <div className="box-info-details">
+            <div className="box-info">
+              <h1 className="title">{isMeal ? recipe.strMeal : recipe.strDrink}</h1>
+              <p className="category-details">{ isMeal ? recipe.strCategory : recipe.strAlcoholic }</p>
+            </div>
+            <div className="container-buttons">
+              <ButtonShared />
+              <ButtonFavorite 
+                id={ isMeal ? recipe.idMeal : recipe.idDrink }
+                thumb={ isMeal ? recipe.strMealThumb : recipe.strDrinkThumb }
+                page={ isMeal ? 'meals' : 'drinks' }
+                name={ isMeal ? recipe.strMeal : recipe.strDrink }
+                category={ recipe.strCategory }
+                isFavorite={ false }
+              />
+            </div>
           </div>
-          <div>
-            <ButtonShared />
-            <ButtonFavorite 
-              id={ isMeal ? recipe.idMeal : recipe.idDrink }
-              thumb={ isMeal ? recipe.strMealThumb : recipe.strDrinkThumb }
-              page={ isMeal ? 'meals' : 'drinks' }
-              name={ isMeal ? recipe.strMeal : recipe.strDrink }
-              category={ recipe.strCategory }
-              isFavorite={ false }
-            />
+          <div className="container-descriptions">
+            <h2 className="title">Ingredientes</h2>
+            <div className="box-descriptions">
+              {ingredientsList.map((ingredient, index) => (
+                <ul key={index}>
+                  <li className="item-list">{`${measureList[index]} - ${ingredient}`}</li>
+                </ul>
+              ))}
+            </div>
           </div>
-          <div>
-            <h2>Ingredientes</h2>
-            {ingredientsList.map((ingredient, index) => (
-              <ul key={index}>
-                <li>{`${measureList[index]} - ${ingredient}`}</li>
-              </ul>
-            ))}
+          <div className="container-descriptions">
+            <h2 className="title">Instruções</h2>
+            <p className="box-descriptions">{recipe.strInstructions}</p>
           </div>
-          <div>
-            <h2>Instruções</h2>
-            {recipe.strInstructions}
-          </div>
-          <div>
+          <div className="container-video">
             {isMeal && (
               <iframe
                 width="96%"
@@ -95,12 +99,12 @@ function RecipeDetail() {
               />
             )}
           </div>
-          <div>
-            <ButtonStartRecipe />
+          <div className="container-carosel">
+            <h2 className="title">Recomendações</h2>
+            <CarouselRecommendations />
           </div>
           <div>
-            <h2>Recomendações</h2>
-            <CarouselRecommendations />
+            <ButtonStartRecipe />
           </div>
         </div>
       ))}
