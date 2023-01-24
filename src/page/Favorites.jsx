@@ -75,7 +75,12 @@ function Favorites() {
                 <p>{recipeFav.category}</p>
                 <div>
                   <ButtonShared />
-                  <ButtonFavorite id={recipeFav.id} />
+                  <ButtonFavorite 
+                    id={recipeFav.id}
+                    thumb={ recipeFav.thumb }
+                    name={ recipeFav.name }
+                    category={ recipeFav.category }
+                    isFavorite={ true } />
                 </div>
               </div>
             </div>

@@ -5,25 +5,13 @@ import {
   saveDataLocalStorage,
 } from "../services/localStorage";
 
-function ButtonFavorite({id, thumb, name, category, page}) {
-  console.log(id);
-  console.log(thumb);
-  console.log(name);
-  console.log(category);
-  console.log(page);
-
-  const [iconFavorite, setIconFavorite] = useState(false);
+function ButtonFavorite({id, thumb, name, category, page, isFavorite}) {
+  const [iconFavorite, setIconFavorite] = useState(isFavorite);
   const favoriteRecipe = getDataLocalStorage("favoriteRecipes");
-
-  const verifyFavorite = () => {
-    const isFavorite = favoriteRecipe.some((recipe) => recipe.id === id);
-    return isFavorite;
-  };
 
   const addFavorite = () => {
     const newFavorite = {id, name, category, page, thumb}
     favoriteRecipe.push(newFavorite);
-    console.log(newFavorite);
     saveDataLocalStorage("favoriteRecipes", favoriteRecipe);
     setIconFavorite(true);
   };
@@ -34,6 +22,11 @@ function ButtonFavorite({id, thumb, name, category, page}) {
     );
     saveDataLocalStorage("favoriteRecipes", arrayFavoriteRecipe);
     setIconFavorite(false);
+  };
+
+  const verifyFavorite = () => {
+    const isFavorite = favoriteRecipe.some((recipe) => recipe.id === id);
+    return isFavorite;
   };
 
   const handleFavorite = () => {
