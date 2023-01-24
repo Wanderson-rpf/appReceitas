@@ -263,9 +263,28 @@ body {
 .card-image .card-img {
   @apply relative h-full w-full object-cover rounded-full border-4 border-clrMain-50;
 }
+
+/* <------------------ Message share ------------------ > */
+.copy-share {
+  @apply bg-orange-50 rounded-lg shadow-lg p-2 absolute -top-20 -left-3;
+}
+
+.copy-share:after {
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid white;
+  content: '';
+  filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.2));
+  @apply absolute left-6 w-0 h-0 -bottom-2;
+}
+
 /* <------------------ Button share ------------------ > */
+.btn-share {
+  @apply relative;
+}
+
 .icon-share {
-  @apply text-3xl
+  @apply text-3xl;
 }
 
 /* <------------------ Button favorite ------------------ > */
@@ -275,7 +294,7 @@ body {
 
 /* <------------------ Button start recipe ------------------ > */
 .btn-start-recipe {
-  @apply flex items-center justify-center gap-2 rounded-lg bg-clrMain-100 text-white font-medium fixed text-lg my-1 px-3 py-1 bottom-2 right-2 z-30;
+  @apply flex items-center justify-center gap-2 rounded-lg bg-clrMain-100 text-white font-medium fixed text-lg my-1 px-3 py-1 bottom-2 right-2 z-20;
 }
 
 /* <------------------ Page details ------------------ > */
