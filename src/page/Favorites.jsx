@@ -4,6 +4,7 @@ import { getDataLocalStorage } from "../services/localStorage";
 import { Link } from "react-router-dom";
 import ButtonShared from "../components/ButtonShared";
 import ButtonFavorite from "../components/ButtonFavorite";
+import Title from "../components/Title";
 
 function Favorites() {
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
@@ -34,7 +35,7 @@ function Favorites() {
   return (
     <div>
       <Header />
-      <h1>Receitas Favoritas</h1>
+      <Title title={ 'Receitas Favoritas' } />
       <div>
         <button
           type="button"

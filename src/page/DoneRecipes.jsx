@@ -1,11 +1,12 @@
 import React from "react";
 import Header from "../components/Header";
+import Title from "../components/Title";
 
 function DoneRecipes() {
   return (
     <div>
       <Header />
-      <h1>DoneRecipes</h1>
+      <Title title={ 'Receitas concluídas' } />
     </div>
   );
 }
