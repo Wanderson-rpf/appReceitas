@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 html {
-  @apply max-w-xs max-h-screen scroll-smooth;
+  @apply max-w-sm scroll-smooth;
 }
 
 body {
@@ -11,7 +11,7 @@ body {
 }
 
 .login-container {
-  @apply text-white flex flex-col h-screen w-screen justify-center items-center bg-clrMain-100;
+  @apply max-w-sm text-white flex flex-col h-screen w-screen justify-center items-center bg-clrMain-100;
 }
 
 .container-intro {
@@ -43,7 +43,7 @@ body {
 }
 
 .container-header {
-  @apply bg-clrMain-100 max-h-20 w-screen flex justify-between items-center;
+  @apply bg-clrMain-100 max-w-sm max-h-20 w-screen flex justify-between items-center relative;
 }
 
 .logo-secondary {
@@ -89,7 +89,7 @@ body {
 }
 
 .container-meals {
-  @apply h-screen;
+  @apply max-w-sm h-screen;
 }
 
 .container-list-menu {
@@ -109,7 +109,7 @@ body {
 }
 
 .container-title {
-  @apply w-full flex items-center justify-center;
+  @apply max-w-sm flex items-center justify-center;
 }
 
 .box-title {
@@ -117,7 +117,7 @@ body {
 }
 
 .box-search {
-  @apply flex flex-col justify-center w-screen items-center mt-2;
+  @apply flex flex-col justify-center max-w-sm items-center mt-2;
 }
 
 .label-search {
@@ -137,7 +137,7 @@ body {
 }
 
 .container-filter {
-  @apply flex justify-center items-center gap-7 text-white text-lg w-screen;
+  @apply max-w-sm flex justify-center items-center gap-7 text-white text-lg;
 }
 
 .radio_filter {
@@ -149,7 +149,7 @@ body {
 }
 
 .container-type-filter {
-  @apply w-screen mt-3 flex flex-col justify-start;
+  @apply max-w-sm mt-3 flex flex-col justify-start;
 }
 
 .icon-filter {
@@ -175,7 +175,7 @@ body {
 
 /* <------------------ Recipes ------------------ > */
 .container-recipe {
-  @apply grid grid-cols-2 w-screen;
+  @apply grid grid-cols-2 max-w-sm;
 }
 
 .container-item-recipe {
