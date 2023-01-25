@@ -46,7 +46,7 @@ function Menu() {
             </Link>
           </li>
           <li>
-            <Link to="/done-recipes" className="list-items">
+            <Link to="/recipes-in-progress" className="list-items">
               <HiPencilAlt className="icon-menu" />
               <p>Em andamento</p>
             </Link>
