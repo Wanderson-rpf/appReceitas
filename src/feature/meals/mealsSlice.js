@@ -72,12 +72,17 @@ const initialState = {
   error: null,
   recipeMeals: [],
   recommendationsDrinks: [],
+  recipeInProgress: [],
 };
 
 export const mealsSlice = createSlice({
   name: 'meals',
   initialState,
-  reducers: {},
+  reducers: {
+    saveRecipeInProgress(state, action) {
+      state.recipeInProgress = [action.payload];
+    }
+  },
   extraReducers: (builder) => {
     // Search Meals for Name
     builder.addCase(fetchSearchMealsName.fulfilled, (state, action) => {
@@ -99,10 +104,10 @@ export const mealsSlice = createSlice({
       state.categoriesRecipeMeals = action.payload;
     });
 
-        // Categories Filter Meals
-        builder.addCase(fetchCategoryMeals.fulfilled, (state, action) => {
-          state.recipeMeals = action.payload;
-        });
+    // Categories Filter Meals
+    builder.addCase(fetchCategoryMeals.fulfilled, (state, action) => {
+      state.recipeMeals = action.payload;
+    });
 
     // Recipes Meals
     builder.addCase(fetchRecipesMeals.fulfilled, (state, action) => {
@@ -122,3 +127,4 @@ export const mealsSlice = createSlice({
 });
 
 export const mealsReducer = mealsSlice.reducer;
+export const { saveRecipeInProgress } = mealsSlice.actions;
