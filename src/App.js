@@ -10,6 +10,7 @@ import Favorites from './page/Favorites';
 import DoneRecipes from './page/DoneRecipes';
 import RecipeDetail from './page/RecipeDetail';
 import RecipeInProgress from './page/RecipeInProgress';
+import RecipeInProgressList from './page/RecipeInProgressList';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
       <Route path='/done-recipes' element={<DoneRecipes />} />
       <Route path='/meals/:id' element={<RecipeDetail />} />
       <Route path='/drinks/:id' element={<RecipeDetail />} />
+      <Route path='/recipes-in-progress' element={<RecipeInProgressList />} />
       <Route path='/meals/:id/in-progress' element={<RecipeInProgress />} />
       <Route path='/drinks/:id/in-progress' element={<RecipeInProgress />} />
     </Routes>
