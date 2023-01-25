@@ -353,3 +353,9 @@ body {
 .container-carosel {
   @apply pb-14 bg-orange-50 rounded-lg mt-16;
 }
+
+/* <------------------ Page details ------------------ > */
+.container-filter-favorites {
+  background-color: red;
+  @apply flex items-center justify-center gap-10;
+}

@@ -36,7 +36,7 @@ function Favorites() {
     <div>
       <Header />
       <Title title={ 'Receitas Favoritas' } />
-      <div>
+      <div className="container-filter-favorites">
         <button
           type="button"
           onClick={() => setFavoriteRecipes(allFavoriteRecipes)}
