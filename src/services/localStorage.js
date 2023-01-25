@@ -1,10 +1,14 @@
 if (!JSON.parse(localStorage.getItem('favoriteRecipes'))) {
   localStorage.setItem('favoriteRecipes', JSON.stringify([]));
-}
+};
+
+if (!JSON.parse(localStorage.getItem('listAllRecipesInProgress'))) {
+  localStorage.setItem('listAllRecipesInProgress', JSON.stringify([]));
+};
 
 if (!JSON.parse(localStorage.getItem('recipeInProgress'))) {
   localStorage.setItem('recipeInProgress', JSON.stringify([]));
-}
+};
 
 export const getDataLocalStorage = (label) => {
   const data = JSON.parse(localStorage.getItem(label));
@@ -18,4 +22,8 @@ export const saveDataLocalStorage = (label, data) => {
 export const saveNewDataLocalStorage = (label, data) => {
   const previousData = getDataLocalStorage(label);
   saveDataLocalStorage(label, [...previousData, data]);
+};
+
+export const removeDataLocalStorage = (label) => {
+  localStorage.removeItem(label)
 };

@@ -66,18 +66,31 @@ export const fetchSelectedMeal = createAsyncThunk(
   }
 );
 
+export const fetchRecipeMealInProgress = createAsyncThunk(
+  'meals/fetchRecipeMealInProgress',
+  async (id) => {
+    const responseApi = await requestMealsId(id);
+    return responseApi;
+  }
+);
+
 const initialState = {
   meal: [],
   categoriesRecipeMeals: [],
   error: null,
   recipeMeals: [],
   recommendationsDrinks: [],
+  recipeInProgress: [],
 };
 
 export const mealsSlice = createSlice({
   name: 'meals',
   initialState,
-  reducers: {},
+  reducers: {
+    saveRecipeMealInProgress(state, action) {
+      state.recipeInProgress = [action.payload];
+    }
+  },
   extraReducers: (builder) => {
     // Search Meals for Name
     builder.addCase(fetchSearchMealsName.fulfilled, (state, action) => {
@@ -99,10 +112,10 @@ export const mealsSlice = createSlice({
       state.categoriesRecipeMeals = action.payload;
     });
 
-        // Categories Filter Meals
-        builder.addCase(fetchCategoryMeals.fulfilled, (state, action) => {
-          state.recipeMeals = action.payload;
-        });
+    // Categories Filter Meals
+    builder.addCase(fetchCategoryMeals.fulfilled, (state, action) => {
+      state.recipeMeals = action.payload;
+    });
 
     // Recipes Meals
     builder.addCase(fetchRecipesMeals.fulfilled, (state, action) => {
@@ -118,7 +131,13 @@ export const mealsSlice = createSlice({
     builder.addCase(fetchSelectedMeal.fulfilled, (state, action) => {
       state.meal = action.payload;
     });
+
+    // Meal Recipe in Progress
+    builder.addCase(fetchRecipeMealInProgress.fulfilled, (state, action) => {
+      state.recipeInProgress = action.payload;
+    });
   }
 });
 
 export const mealsReducer = mealsSlice.reducer;
+export const { saveRecipeMealInProgress } = mealsSlice.actions;

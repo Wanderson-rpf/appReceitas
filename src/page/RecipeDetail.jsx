@@ -104,7 +104,10 @@ function RecipeDetail() {
             <CarouselRecommendations />
           </div>
           <div className="container-btn-start-recipe">
-            <ButtonStartRecipe recipe={ isMeal ? mealsRecipe[0] : drinksRecipe[0] } />
+            <ButtonStartRecipe 
+              recipe={ isMeal ? mealsRecipe[0] : drinksRecipe[0] }
+              page={ isMeal ? 'meals' : 'drinks' }
+            />
           </div>
         </div>
       ))}

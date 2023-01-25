@@ -3,7 +3,7 @@ import {
   recipesDrinksApi, 
   requestAllCategoryDrinks, 
   requestCategoryDrinks, 
-  requestDrinkIds, 
+  requestDrinkId,
   searchRecipesDrinksFirstLetter, 
   searchRecipesDrinksIngredient, 
   searchRecipesDrinksName 
@@ -61,7 +61,15 @@ export const fetchRecipesDrinks = createAsyncThunk(
 export const fetchSelectedDrink = createAsyncThunk(
   'drinks/fetchSelectedDrink',
   async (id) => {
-    const responseApi = await requestDrinkIds(id);
+    const responseApi = await requestDrinkId(id);
+    return responseApi;
+  }
+);
+
+export const fetchRecipeDrinkInProgress = createAsyncThunk(
+  'drinks/fetchRecipeDrinkInProgress',
+  async (id) => {
+    const responseApi = await requestDrinkId(id);
     return responseApi;
   }
 );
@@ -72,12 +80,17 @@ const initialState = {
   error: null,
   recipeDrinks: [],
   recommendationsMeals: [],
+  recipeInProgress: [],
 };
 
 export const drinksSlice = createSlice({
   name: 'drinks',
   initialState,
-  reducers: {},
+  reducers: {
+    saveRecipeDrinkInProgress(state, action) {
+      state.recipeInProgress = [action.payload];
+    }
+  },
   extraReducers: (builder) => {
     // Search Drinks for Name
     builder.addCase(fetchSearchDrinksName.fulfilled, (state, action) => {
@@ -117,8 +130,13 @@ export const drinksSlice = createSlice({
     builder.addCase(fetchSelectedDrink.fulfilled, (state, action) => {
       state.drink = action.payload;
     });
+
+    // Drink Recipe in Progress
+    builder.addCase(fetchRecipeDrinkInProgress.fulfilled, (state, action) => {
+      state.recipeInProgress = action.payload;
+    });
   }
 });
 
-export const { selectDrinksRecipe } = drinksSlice.actions;
+export const { saveRecipeDrinkInProgress } = drinksSlice.actions;
 export const drinksReducer = drinksSlice.reducer;
