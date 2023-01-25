@@ -79,7 +79,7 @@ export const mealsSlice = createSlice({
   name: 'meals',
   initialState,
   reducers: {
-    saveRecipeInProgress(state, action) {
+    saveRecipeMealInProgress(state, action) {
       state.recipeInProgress = [action.payload];
     }
   },
@@ -127,4 +127,4 @@ export const mealsSlice = createSlice({
 });
 
 export const mealsReducer = mealsSlice.reducer;
-export const { saveRecipeInProgress } = mealsSlice.actions;
+export const { saveRecipeMealInProgress } = mealsSlice.actions;

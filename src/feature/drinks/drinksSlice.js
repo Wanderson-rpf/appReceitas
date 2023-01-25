@@ -72,12 +72,17 @@ const initialState = {
   error: null,
   recipeDrinks: [],
   recommendationsMeals: [],
+  recipeInProgress: [],
 };
 
 export const drinksSlice = createSlice({
   name: 'drinks',
   initialState,
-  reducers: {},
+  reducers: {
+    saveRecipeDrinkInProgress(state, action) {
+      state.recipeInProgress = [action.payload];
+    }
+  },
   extraReducers: (builder) => {
     // Search Drinks for Name
     builder.addCase(fetchSearchDrinksName.fulfilled, (state, action) => {
@@ -120,5 +125,5 @@ export const drinksSlice = createSlice({
   }
 });
 
-export const { selectDrinksRecipe } = drinksSlice.actions;
+export const { saveRecipeDrinkInProgress } = drinksSlice.actions;
 export const drinksReducer = drinksSlice.reducer;
