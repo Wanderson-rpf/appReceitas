@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { MdFastfood } from 'react-icons/md';
+import { GiHotMeal } from "react-icons/gi";
+import { ImGlass2 } from 'react-icons/im';
 import Header from "../components/Header";
 import { getDataLocalStorage } from "../services/localStorage";
 import { Link } from "react-router-dom";
 import ButtonShared from "../components/ButtonShared";
 import ButtonFavorite from "../components/ButtonFavorite";
 import Title from "../components/Title";
+import ButtonPageUp from "../components/ButtonPageUp";
 
 function Favorites() {
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
@@ -19,7 +23,7 @@ function Favorites() {
   const handleFilterMeals = () => {
     setFavoriteRecipes(allFavoriteRecipes);
     const filtredMealsFavorite = favoriteRecipes.filter(
-      (favoriteRecipe) => favoriteRecipe.type === "meal"
+      (favoriteRecipe) => favoriteRecipe.page === "meals"
     );
     setFavoriteRecipes(filtredMealsFavorite);
   };
@@ -27,7 +31,7 @@ function Favorites() {
   const handleFilterDrinks = () => {
     setFavoriteRecipes(allFavoriteRecipes);
     const filtredDrinksFavorite = favoriteRecipes.filter(
-      (favoriteRecipe) => favoriteRecipe.type === "drink"
+      (favoriteRecipe) => favoriteRecipe.page === "drinks"
     );
     setFavoriteRecipes(filtredDrinksFavorite);
   };
@@ -41,40 +45,43 @@ function Favorites() {
           type="button"
           onClick={() => setFavoriteRecipes(allFavoriteRecipes)}
         >
-          Todos
+          <MdFastfood className="icon-filter" />
         </button>
         <button type="button" onClick={handleFilterMeals}>
-          Pratos
+          <GiHotMeal className="icon-filter" />
         </button>
         <button type="button" onClick={handleFilterDrinks}>
-          Bebidas
+          <ImGlass2 className="icon-filter" />
         </button>
       </div>
-      <div>
+      <div className="container-recipe-favorite">
         {favoriteRecipes.map((recipeFav, index) => (
-          <div key={index}>
-            <div>
+          <div key={index} className="container-favorite-info">
+            <div className="container-descriptions-favorite">
               <Link
                 to={
-                  recipeFav.type === "meal"
+                  recipeFav.page === "meals"
                     ? `/meals/${recipeFav.id}`
                     : `/drinks/${recipeFav.id}`
                 }
               >
-                <img src={recipeFav.thumb} alt="favorite.thumb" />
+                <img 
+                  src={recipeFav.thumb} 
+                  alt="favorite.thumb" 
+                  className="thumb-favorite" />
               </Link>
-              <div>
+              <div className="box-descriptions-favorite">
                 <Link
                   to={
-                    recipeFav.type === "meal"
+                    recipeFav.page === "meals"
                       ? `/meals/${recipeFav.id}`
                       : `/drinks/${recipeFav.id}`
                   }
                 >
-                  <p>{recipeFav.name}</p>
+                  <p className="title-favorite">{recipeFav.name}</p>
                 </Link>
                 <p>{recipeFav.category}</p>
-                <div>
+                <div className="container-buttons">
                   <ButtonShared />
                   <ButtonFavorite 
                     id={recipeFav.id}
@@ -88,6 +95,7 @@ function Favorites() {
           </div>
         ))}
       </div>
+      <ButtonPageUp />
     </div>
   );
 }

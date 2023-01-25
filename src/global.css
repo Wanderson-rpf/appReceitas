@@ -358,8 +358,32 @@ body {
   @apply pb-14 bg-orange-50 rounded-lg mt-16;
 }
 
-/* <------------------ Page details ------------------ > */
+/* <------------------ Page favorites ------------------ > */
+.container-recipe-favorite {
+  @apply flex flex-col max-w-sm;
+}
+
 .container-filter-favorites {
-  background-color: red;
-  @apply flex items-center justify-center gap-10;
+  @apply flex items-center justify-center gap-10 my-7;
+}
+
+.container-favorite-info {
+  @apply max-w-sm flex items-center justify-center;
+}
+
+.thumb-favorite {
+  @apply h-44 rounded-bl-lg rounded-tl-lg;
+}
+
+.container-descriptions-favorite {
+  @apply flex mb-2 rounded-lg border-2 border-clrMain-100;
+}
+
+.box-descriptions-favorite {
+  border: 1px solid green;
+  @apply flex flex-col items-center bg-orange-50 text-clrMain-100 px-3 h-44 rounded-br-lg rounded-tr-lg w-40;
+}
+
+.title-favorite {
+  @apply flex items-center justify-center rounded-lg bg-clrMain-100 text-white font-semibold text-xl mt-12 px-3 py-1;
 }
