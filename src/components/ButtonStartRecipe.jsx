@@ -14,7 +14,7 @@ function ButtonStartRecipe({recipe, page}) {
   const location = useLocation();
   const navigate = useNavigate();
   const dispacth = useDispatch();
-  const inProgress = getDataLocalStorage("recipeInProgress");
+  const inProgress = getDataLocalStorage("listAllRecipesInProgress");
 
   const handleStartRecipe = () => {
     if (page === 'meals') {
@@ -23,7 +23,8 @@ function ButtonStartRecipe({recipe, page}) {
       dispacth(saveRecipeDrinkInProgress(recipe));
     }
     inProgress.push(recipe);
-    saveDataLocalStorage("recipeInProgress", inProgress);
+    saveDataLocalStorage("listAllRecipesInProgress", inProgress);
+    saveDataLocalStorage("recipeInProgress", [recipe])
     navigate(`${location.pathname}/in-progress`);
   }
 

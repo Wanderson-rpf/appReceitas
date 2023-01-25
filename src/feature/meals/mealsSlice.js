@@ -66,6 +66,14 @@ export const fetchSelectedMeal = createAsyncThunk(
   }
 );
 
+export const fetchRecipeMealInProgress = createAsyncThunk(
+  'meals/fetchRecipeMealInProgress',
+  async (id) => {
+    const responseApi = await requestMealsId(id);
+    return responseApi;
+  }
+);
+
 const initialState = {
   meal: [],
   categoriesRecipeMeals: [],
@@ -122,6 +130,11 @@ export const mealsSlice = createSlice({
     // Meal Selected
     builder.addCase(fetchSelectedMeal.fulfilled, (state, action) => {
       state.meal = action.payload;
+    });
+
+    // Meal Recipe in Progress
+    builder.addCase(fetchRecipeMealInProgress.fulfilled, (state, action) => {
+      state.recipeInProgress = action.payload;
     });
   }
 });

@@ -38,7 +38,7 @@ export const requestMealsId = async (idRecipeMeal) => {
   return assistantMeals(ENDPOINT);
 };
 
-export const requestDrinkIds = async (idRecipeDrink) => {
+export const requestDrinkId = async (idRecipeDrink) => {
   const ENDPOINT = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${idRecipeDrink}`;
   return assistantDrinks(ENDPOINT);
 };

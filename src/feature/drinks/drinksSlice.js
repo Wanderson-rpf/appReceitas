@@ -3,7 +3,7 @@ import {
   recipesDrinksApi, 
   requestAllCategoryDrinks, 
   requestCategoryDrinks, 
-  requestDrinkIds, 
+  requestDrinkId,
   searchRecipesDrinksFirstLetter, 
   searchRecipesDrinksIngredient, 
   searchRecipesDrinksName 
@@ -61,7 +61,15 @@ export const fetchRecipesDrinks = createAsyncThunk(
 export const fetchSelectedDrink = createAsyncThunk(
   'drinks/fetchSelectedDrink',
   async (id) => {
-    const responseApi = await requestDrinkIds(id);
+    const responseApi = await requestDrinkId(id);
+    return responseApi;
+  }
+);
+
+export const fetchRecipeDrinkInProgress = createAsyncThunk(
+  'drinks/fetchRecipeDrinkInProgress',
+  async (id) => {
+    const responseApi = await requestDrinkId(id);
     return responseApi;
   }
 );
@@ -121,6 +129,11 @@ export const drinksSlice = createSlice({
 
     builder.addCase(fetchSelectedDrink.fulfilled, (state, action) => {
       state.drink = action.payload;
+    });
+
+    // Drink Recipe in Progress
+    builder.addCase(fetchRecipeDrinkInProgress.fulfilled, (state, action) => {
+      state.recipeInProgress = action.payload;
     });
   }
 });
