@@ -103,7 +103,7 @@ function RecipeDetail() {
             <h2 className="title">Recomendações</h2>
             <CarouselRecommendations />
           </div>
-          <div>
+          <div className="container-btn-start-recipe">
             <ButtonStartRecipe />
           </div>
         </div>
