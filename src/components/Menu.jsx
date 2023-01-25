@@ -2,8 +2,9 @@ import React from "react";
 import { MdOutlineFavoriteBorder } from 'react-icons/md';
 import { FiLogOut } from 'react-icons/fi';
 import { AiOutlineHome, AiOutlineUser, AiOutlineCheckCircle } from 'react-icons/ai';
-import { TbMeat } from 'react-icons/tb';
 import { BiDrink } from 'react-icons/bi';
+import { HiPencilAlt } from 'react-icons/hi';
+import { GiHotMeal } from "react-icons/gi";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { fetchRecipesMeals } from "../feature/meals/mealsSlice";
@@ -28,7 +29,7 @@ function Menu() {
           </li>
           <li>
             <Link to="/meals" className="list-items">
-              <TbMeat className="icon-menu" />
+              <GiHotMeal className="icon-menu" />
               <p>Pratos</p>
             </Link>
           </li>
@@ -42,6 +43,12 @@ function Menu() {
             <Link to="/favorite" className="list-items">
               <MdOutlineFavoriteBorder className="icon-menu" />
               <p>Favoritos</p>
+            </Link>
+          </li>
+          <li>
+            <Link to="/recipes-in-progress" className="list-items">
+              <HiPencilAlt className="icon-menu" />
+              <p>Em andamento</p>
             </Link>
           </li>
           <li>

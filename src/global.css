@@ -108,12 +108,21 @@ body {
   @apply absolute bottom-24;
 }
 
+/* <------------------ Title ------------------ > */
 .container-title {
   @apply max-w-sm flex items-center justify-center;
 }
 
 .box-title {
-  @apply bg-clrMain-100 text-white text-2xl w-2/4 my-1 p-1 flex items-center justify-center gap-2 rounded-lg;
+  @apply bg-clrMain-100 text-white text-2xl my-1 p-2 flex items-center justify-center gap-2 rounded-lg;
+}
+
+.title-page {
+  @apply text-center;
+}
+
+.icon-title {
+  @apply w-8 flex items-center justify-center;
 }
 
 .box-search {
@@ -343,4 +352,10 @@ body {
 
 .container-carosel {
   @apply pb-14 bg-orange-50 rounded-lg mt-16;
+}
+
+/* <------------------ Page details ------------------ > */
+.container-filter-favorites {
+  background-color: red;
+  @apply flex items-center justify-center gap-10;
 }
