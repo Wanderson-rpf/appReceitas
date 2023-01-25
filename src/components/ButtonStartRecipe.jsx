@@ -1,12 +1,19 @@
 import React from "react";
 import { HiPencilAlt } from 'react-icons/hi';
 import { useLocation, useNavigate } from "react-router-dom";
+import {
+  getDataLocalStorage,
+  saveDataLocalStorage,
+} from "../services/localStorage";
 
-function ButtonStartRecipe() {
+function ButtonStartRecipe({recipe}) {
   const location = useLocation();
   const navigate = useNavigate();
+  const inProgress = getDataLocalStorage("recipeInProgress");
 
   const handleStartRecipe = () => {
+    inProgress.push(recipe);
+    saveDataLocalStorage("recipeInProgress", inProgress);
     navigate(`${location.pathname}/in-progress`);
   }
 
