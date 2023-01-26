@@ -107,6 +107,7 @@ function RecipeDetail() {
             <ButtonStartRecipe 
               recipe={ isMeal ? mealsRecipe[0] : drinksRecipe[0] }
               page={ isMeal ? 'meals' : 'drinks' }
+              idRecipe={ id }
             />
           </div>
         </div>
