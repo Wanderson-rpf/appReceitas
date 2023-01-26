@@ -29,11 +29,11 @@ function ButtonStartRecipe({recipe, page}) {
   }
 
   return (
-    <div>
+    <div className="container-btn-recipe">
       <button
         type="button"
         onClick={handleStartRecipe}
-        className="btn-start-recipe"
+        className="btn-recipe"
       >
         Iniciar receita<HiPencilAlt />
       </button>

@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
+import ButtonDoneRecipe from "../components/ButtonDoneRecipe";
 import ButtonFavorite from "../components/ButtonFavorite";
 import ButtonShared from "../components/ButtonShared";
 import Header from "../components/Header";
 import { fetchRecipeDrinkInProgress } from "../feature/drinks/drinksSlice";
 import { fetchRecipeMealInProgress } from "../feature/meals/mealsSlice";
 import { listIngredients } from "../helpers/FunctionsAssistants";
-import { saveDataLocalStorage } from "../services/localStorage";
+import { getDataLocalStorage, saveDataLocalStorage } from "../services/localStorage";
 
 function RecipeInProgress() {
   const dispacth = useDispatch();
@@ -28,6 +29,8 @@ function RecipeInProgress() {
       dispacth(fetchRecipeDrinkInProgress(id));
       setIsMeal(false);
     }
+    const checkListSalved = getDataLocalStorage(id);
+    setCkeckListIngredients(checkListSalved);
   }, []);
 
   const verifyTypeRecipe = () => {
@@ -53,10 +56,9 @@ function RecipeInProgress() {
   };
 
   useEffect(() => {
-    listIngredients.length === ckeckListIngredients.length ? setIsDisabled(false) : setIsDisabled(true)
+    ingredientsList.length === ckeckListIngredients.length ? setIsDisabled(false) : setIsDisabled(true)
     saveDataLocalStorage(id, ckeckListIngredients);
   }, [ckeckListIngredients]);
-
 
   return (
     <div>
@@ -126,6 +128,12 @@ function RecipeInProgress() {
           </div>
         </div>
       ))}
+      <ButtonDoneRecipe 
+        id={ id }
+        isDisabled={ isDisabled } 
+        recipe={ isMeal ? mealsRecipe : drinksRecipe }
+        page={ isMeal ? 'meals' : 'drinks' }
+      />
     </div>
   );
 }
