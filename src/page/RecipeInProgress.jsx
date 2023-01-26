@@ -30,6 +30,7 @@ function RecipeInProgress() {
       setIsMeal(false);
     }
     const checkListSalved = getDataLocalStorage(id);
+    console.log('->', checkListSalved);
     setCkeckListIngredients(checkListSalved);
   }, []);
 
