@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { saveRecipeDrinkInProgress } from "../feature/drinks/drinksSlice";
 import { saveRecipeMealInProgress } from "../feature/meals/mealsSlice";
+import { createObjRecipe } from "../helpers/FunctionsAssistants";
 
 import {
   getDataLocalStorage,
@@ -42,14 +43,14 @@ function ButtonStartRecipe({ recipe, page, idRecipe }) {
     if (started) {
       saveDataLocalStorage("recipeInProgress", [recipe]);
     } else {
-      inProgress.push(recipe);
+      const newObj = createObjRecipe(page, recipe);
+      inProgress.push(newObj);
       saveDataLocalStorage("listAllRecipesInProgress", inProgress);
       saveDataLocalStorage("recipeInProgress", [recipe]);
     }
     if (!JSON.parse(localStorage.getItem(idRecipe))) {
       localStorage.setItem(idRecipe, JSON.stringify([]));
     }
-
     navigate(`${location.pathname}/in-progress`);
   };
 
