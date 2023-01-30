@@ -1,4 +1,5 @@
 import React from "react";
+import ButtonContinueRecipe from "../components/ButtonContinueRecipe";
 import ButtonDeleteRecipeInProgress from "../components/ButtonDeleteRecipeInProgress";
 import ButtonPageUp from "../components/ButtonPageUp";
 import Header from "../components/Header";
@@ -20,9 +21,10 @@ function RecipeInProgressList() {
                 <img src={recipe.thumb} alt="" className="thumb-favorite" />
               </div>
               <div className="box-descriptions-favorite">
-                <p  className="title-favorite">{recipe.name}</p>
+                <p className="title-favorite">{recipe.name}</p>
                 <p>{recipe.category}</p>
-                <div>
+                <div className="container-options">
+                  <ButtonContinueRecipe />
                   <ButtonDeleteRecipeInProgress id={ recipe.id }/>
                 </div>
               </div>
