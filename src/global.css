@@ -19,7 +19,7 @@ body {
 }
 
 .container-buttons {
-  @apply flex pb-20;
+  @apply flex pb-20 mt-9;
 }
 
 .text-intro {
@@ -392,9 +392,13 @@ body {
 }
 
 .box-descriptions-favorite {
-  @apply flex flex-col items-center bg-orange-50 text-clrMain-100 px-3 h-44 rounded-br-lg rounded-tr-lg w-40;
+  @apply flex flex-col items-center bg-orange-50 text-clrMain-100 px-3 h-44 p-0 rounded-br-lg rounded-tr-lg w-40;
 }
 
 .title-favorite {
-  @apply flex items-center justify-center rounded-lg bg-clrMain-100 text-white font-semibold text-xl mt-12 px-3 py-1;
+  @apply flex items-center justify-center rounded-lg bg-clrMain-100 text-white font-semibold text-xl mt-4 px-3 py-1;
+}
+
+.container-options {
+  @apply flex flex-col items-center justify-center mt-2;
 }
