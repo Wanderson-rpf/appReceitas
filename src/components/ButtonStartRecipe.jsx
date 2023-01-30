@@ -23,12 +23,12 @@ function ButtonStartRecipe({ recipe, page, idRecipe }) {
   useEffect(() => {
     if (page === "meals") {
       const recipeStarted = inProgress.some(
-        (element) => element.idMeal === recipe.idMeal
+        (element) => element.id === recipe.idMeal
       );
       setStarted(recipeStarted);
-    } else if (page === "drinks") {
+    } else {
       const recipeStarted = inProgress.some(
-        (element) => element.idDrink === recipe.idDrink
+        (element) => element.id === recipe.idDrink
       );
       setStarted(recipeStarted);
     }
@@ -57,17 +57,7 @@ function ButtonStartRecipe({ recipe, page, idRecipe }) {
   return (
     <div className="container-btn-recipe">
       <button type="button" onClick={handleStartRecipe} className="btn-recipe">
-        {!started ? (
-          <p>
-            Iniciar receita
-            <HiPencilAlt />
-          </p>
-        ) : (
-          <p>
-            Continuar receita
-            <HiPencilAlt />
-          </p>
-        )}
+        <p>{ started ? 'Continuar receita' : 'Iniciar receita'}<HiPencilAlt /></p>
       </button>
     </div>
   );

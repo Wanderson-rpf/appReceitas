@@ -1,4 +1,5 @@
 import React from "react";
+import ButtonDeleteRecipeInProgress from "../components/ButtonDeleteRecipeInProgress";
 import ButtonPageUp from "../components/ButtonPageUp";
 import Header from "../components/Header";
 import Title from "../components/Title";
@@ -6,7 +7,6 @@ import { getDataLocalStorage } from "../services/localStorage";
 
 function RecipeInProgressList() {
   const listRecipesInProgress = getDataLocalStorage('listAllRecipesInProgress');
-  console.log(listRecipesInProgress);
 
   return(
     <div>
@@ -22,9 +22,9 @@ function RecipeInProgressList() {
               <div className="box-descriptions-favorite">
                 <p  className="title-favorite">{recipe.name}</p>
                 <p>{recipe.category}</p>
-              </div>
-              <div>
-                
+                <div>
+                  <ButtonDeleteRecipeInProgress id={ recipe.id }/>
+                </div>
               </div>
             </div>
           </div>

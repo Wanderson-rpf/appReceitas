@@ -1,15 +1,14 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { getDataLocalStorage, saveDataLocalStorage } from "../services/localStorage";
+import { getDataLocalStorage, removeDataLocalStorage, saveDataLocalStorage } from "../services/localStorage";
 
 function ButtonDeleteRecipeInProgress({id}) {
-  const navigate = useNavigate();
   const listRecipesInProgress = getDataLocalStorage("listAllRecipesInProgress");
 
   const handleClick = () => {
     const newListRecipes = listRecipesInProgress.filter((item) => item.id !== id)
     saveDataLocalStorage("listAllRecipesInProgress", newListRecipes);
-    navigate('/recipes-in-progress');
+    saveDataLocalStorage("recipeInProgress", []);
+    removeDataLocalStorage(id);
   };
 
   return (
