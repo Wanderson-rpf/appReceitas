@@ -11,12 +11,7 @@ function ButtonDoneRecipe({ id, isDisabled, recipe, page }) {
   const listRecipesInProgress = getDataLocalStorage("listAllRecipesInProgress");
 
   const handleClick = () => {
-    let newListRecipes;
-    if (page === 'meals') {
-      newListRecipes = listRecipesInProgress.filter((item) => item.idMeal !== id)
-    } else if (page === 'drinks') {
-      newListRecipes = listRecipesInProgress.filter((item) => item.idDrink !== id)
-    }
+    const newListRecipes = listRecipesInProgress.filter((item) => item.id !== id)
     saveDataLocalStorage("listAllRecipesInProgress", newListRecipes);
     saveDataLocalStorage("doneRecipes", recipe);
     removeDataLocalStorage("recipeInProgress");

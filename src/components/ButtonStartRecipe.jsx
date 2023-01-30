@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { saveRecipeDrinkInProgress } from "../feature/drinks/drinksSlice";
 import { saveRecipeMealInProgress } from "../feature/meals/mealsSlice";
+import { createObjRecipe } from "../helpers/FunctionsAssistants";
 
 import {
   getDataLocalStorage,
@@ -22,12 +23,12 @@ function ButtonStartRecipe({ recipe, page, idRecipe }) {
   useEffect(() => {
     if (page === "meals") {
       const recipeStarted = inProgress.some(
-        (element) => element.idMeal === recipe.idMeal
+        (element) => element.id === recipe.idMeal
       );
       setStarted(recipeStarted);
-    } else if (page === "drinks") {
+    } else {
       const recipeStarted = inProgress.some(
-        (element) => element.idDrink === recipe.idDrink
+        (element) => element.id === recipe.idDrink
       );
       setStarted(recipeStarted);
     }
@@ -42,31 +43,21 @@ function ButtonStartRecipe({ recipe, page, idRecipe }) {
     if (started) {
       saveDataLocalStorage("recipeInProgress", [recipe]);
     } else {
-      inProgress.push(recipe);
+      const newObj = createObjRecipe(page, recipe);
+      inProgress.push(newObj);
       saveDataLocalStorage("listAllRecipesInProgress", inProgress);
       saveDataLocalStorage("recipeInProgress", [recipe]);
     }
     if (!JSON.parse(localStorage.getItem(idRecipe))) {
       localStorage.setItem(idRecipe, JSON.stringify([]));
     }
-
     navigate(`${location.pathname}/in-progress`);
   };
 
   return (
     <div className="container-btn-recipe">
       <button type="button" onClick={handleStartRecipe} className="btn-recipe">
-        {!started ? (
-          <p>
-            Iniciar receita
-            <HiPencilAlt />
-          </p>
-        ) : (
-          <p>
-            Continuar receita
-            <HiPencilAlt />
-          </p>
-        )}
+        <p>{ started ? 'Continuar receita' : 'Iniciar receita'}<HiPencilAlt /></p>
       </button>
     </div>
   );

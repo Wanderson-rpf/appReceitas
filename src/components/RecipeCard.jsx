@@ -1,38 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { idVerify, strNameRecipe, thumbRecipe } from "../helpers/FunctionsAssistants";
 
 function RecipeCard({ recipe, page}) {
   const navigate = useNavigate();
-
-  const thumbRecipe = () => {
-    let strName;
-    if (page === "/meals") {
-      strName = "strMealThumb";
-    } else if (page === "/drinks") {
-      strName = "strDrinkThumb";
-    }
-    return strName;
-  };
-
-  const strNameRecipe = () => {
-    let strName;
-    if (page === "/meals") {
-      strName = "strMeal";
-    } else if (page === "/drinks") {
-      strName = "strDrink";
-    }
-    return strName;
-  };
-
-  const idVerify = () => {
-    let id;
-    if (page === '/meals') {
-      id = 'idMeal';
-    } else if (page === "/drinks")  {
-      id = 'idDrink';
-    }
-    return id;
-  };
 
   return (
     <div>
@@ -42,19 +13,19 @@ function RecipeCard({ recipe, page}) {
             className="box-recipe"
           >
             <img
-              src={recipe[thumbRecipe()]}
-              alt={recipe[strNameRecipe()]}
+              src={recipe[thumbRecipe(page)]}
+              alt={recipe[strNameRecipe(page)]}
               className="thumb-recipe"
             />
             <div className="box-info-recipe">
-              <p className="name-recipe">{recipe[strNameRecipe()]}</p>
+              <p className="name-recipe">{recipe[strNameRecipe(page)]}</p>
               <p className="category-recipe">{recipe.strCategory}</p>
               <button
                 type="button"
-                onClick={ () => navigate(`${page}/${recipe[idVerify()]}`) }
+                onClick={ () => navigate(`${page}/${recipe[idVerify(page)]}`) }
                 className="btn-go-recipe"
               >
-                Ir para Receita
+                Abrir Receita
               </button>
             </div>
           </div>
