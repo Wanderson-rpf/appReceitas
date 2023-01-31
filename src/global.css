@@ -19,7 +19,7 @@ body {
 }
 
 .container-buttons {
-  @apply flex pb-20 mt-9;
+  @apply flex pb-20;
 }
 
 .text-intro {
@@ -204,7 +204,8 @@ body {
 }
 
 .name-recipe {
-  @apply bg-clrMain-100 text-white mt-4 px-2 rounded-lg text-xl;
+  max-width: 7rem;
+  @apply bg-clrMain-100 text-white mt-4 px-2 rounded-lg text-xl truncate;
 }
 
 .container-icon-recipe{
@@ -307,7 +308,7 @@ body {
 }
 
 .container-btn-recipe {
-  @apply max-w-sm h-12;
+  @apply max-w-sm;
 }
 
 .btn-recipe {
@@ -384,7 +385,7 @@ body {
 }
 
 .thumb-favorite {
-  @apply h-44 rounded-bl-lg rounded-tl-lg;
+  @apply h-32 rounded-bl-lg rounded-tl-lg;
 }
 
 .container-descriptions-favorite {
@@ -392,13 +393,9 @@ body {
 }
 
 .box-descriptions-favorite {
-  @apply flex flex-col items-center bg-orange-50 text-clrMain-100 px-3 h-44 p-0 rounded-br-lg rounded-tr-lg w-40;
-}
-
-.title-favorite {
-  @apply flex items-center justify-center rounded-lg bg-clrMain-100 text-white font-semibold text-xl mt-4 px-3 py-1;
+  @apply flex flex-col items-center bg-orange-50 text-clrMain-100 px-3 h-32 p-0 rounded-br-lg rounded-tr-lg w-40;
 }
 
 .container-options {
-  @apply flex flex-col items-center justify-center mt-2;
+  @apply flex flex-col items-center justify-center mb-2;
 }
