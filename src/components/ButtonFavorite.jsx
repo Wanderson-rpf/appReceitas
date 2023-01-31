@@ -1,32 +1,29 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { HiHeart, HiOutlineHeart } from 'react-icons/hi';
-import {
-  getDataLocalStorage,
-  saveDataLocalStorage,
-} from "../services/localStorage";
+import { useLocalStorage } from "../helpers/hooks/useLocalStorage";
 
-function ButtonFavorite({id, thumb, name, category, page, isFavorite}) {
+function ButtonFavorite({id, thumb, name, category, page, isFavorite, func}) {
   const [iconFavorite, setIconFavorite] = useState(isFavorite);
-  const favoriteRecipe = getDataLocalStorage("favoriteRecipes");
+  const [favorite, setFavorite] = useLocalStorage('favoriteRecipes', []);
 
   const addFavorite = () => {
     const newFavorite = {id, name, category, page, thumb}
-    favoriteRecipe.push(newFavorite);
-    saveDataLocalStorage("favoriteRecipes", favoriteRecipe);
+    setFavorite([...favorite, newFavorite]);
     setIconFavorite(true);
   };
 
   const removeFavorite = () => {
-    const arrayFavoriteRecipe = favoriteRecipe.filter(
+    const arrayFavoriteRecipe = favorite.filter(
       (recipe) => recipe.id !== id
     );
-    saveDataLocalStorage("favoriteRecipes", arrayFavoriteRecipe);
+    setFavorite(arrayFavoriteRecipe);
     setIconFavorite(false);
+    func();
   };
 
   const verifyFavorite = () => {
-    const isFavorite = favoriteRecipe.some((recipe) => recipe.id === id);
+    const isFavorite = favorite.some((recipe) => recipe.id === id);
     return isFavorite;
   };
 
@@ -45,7 +42,9 @@ function ButtonFavorite({id, thumb, name, category, page, isFavorite}) {
   return (
     <div>
       <button type="button" onClick={handleFavorite}>
-        {iconFavorite ? <HiHeart className="icon-favorite" /> : <HiOutlineHeart className="icon-favorite" />}
+        { iconFavorite 
+          ? <HiHeart className="icon-favorite" /> 
+          : <HiOutlineHeart className="icon-favorite" />}
       </button>
     </div>
   );

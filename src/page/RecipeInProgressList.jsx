@@ -21,8 +21,7 @@ function RecipeInProgressList() {
                 <img src={recipe.thumb} alt="" className="thumb-favorite" />
               </div>
               <div className="box-descriptions-favorite">
-                <p className="title-favorite">{recipe.name}</p>
-                <p>{recipe.category}</p>
+                <p className="name-recipe">{recipe.name}</p>
                 <div className="container-options">
                   <ButtonContinueRecipe />
                   <ButtonDeleteRecipeInProgress id={ recipe.id }/>
