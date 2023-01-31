@@ -20,16 +20,16 @@ function RecipeDetail() {
   const [isMeal, setIsMeal] = useState(false);
 
   useEffect(() => {
-    if (location.pathname === `/meals/${id}`) {
+    if (location.pathname.includes('meals')) {
       dispacth(fetchSelectedMeal(id));
       setIsMeal(true);
-    } else if (location.pathname === `/drinks/${id}`) {
+    } else if (location.pathname.includes('drinks')) {
       dispacth(fetchSelectedDrink(id));
       setIsMeal(false);
     } else {
       console.log("Pagina não encontrada.");
     }
-  }, []);
+  }, [location.pathname, id]);
 
   const verifyTypeRecipe = () => {
     let recipes;
