@@ -20,17 +20,21 @@ function Favorites() {
     setAllFavoriteRecipes(newFavoriteRecipes);
   }, []);
 
+  const attListFavorite = () => {
+    const newFavoriteRecipes = getDataLocalStorage("favoriteRecipes");
+    setFavoriteRecipes(newFavoriteRecipes);
+    setAllFavoriteRecipes(newFavoriteRecipes);
+  };
+
   const handleFilterMeals = () => {
-    setFavoriteRecipes(allFavoriteRecipes);
-    const filtredMealsFavorite = favoriteRecipes.filter(
+    const filtredMealsFavorite = allFavoriteRecipes.filter(
       (favoriteRecipe) => favoriteRecipe.page === "meals"
     );
     setFavoriteRecipes(filtredMealsFavorite);
   };
 
   const handleFilterDrinks = () => {
-    setFavoriteRecipes(allFavoriteRecipes);
-    const filtredDrinksFavorite = favoriteRecipes.filter(
+    const filtredDrinksFavorite = allFavoriteRecipes.filter(
       (favoriteRecipe) => favoriteRecipe.page === "drinks"
     );
     setFavoriteRecipes(filtredDrinksFavorite);
@@ -78,7 +82,7 @@ function Favorites() {
                       : `/drinks/${recipeFav.id}`
                   }
                 >
-                  <p className="title-favorite">{recipeFav.name}</p>
+                  <p className="name-recipe">{recipeFav.name}</p>
                 </Link>
                 <p>{recipeFav.category}</p>
                 <div className="container-buttons">
@@ -88,7 +92,9 @@ function Favorites() {
                     thumb={ recipeFav.thumb }
                     name={ recipeFav.name }
                     category={ recipeFav.category }
-                    isFavorite={ true } />
+                    isFavorite={ true } 
+                    func={ attListFavorite }
+                    />
                 </div>
               </div>
             </div>
