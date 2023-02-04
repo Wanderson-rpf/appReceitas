@@ -4,7 +4,7 @@ import ButtonDeleteRecipeInProgress from "../components/ButtonDeleteRecipeInProg
 import ButtonPageUp from "../components/ButtonPageUp";
 import Header from "../components/Header";
 import Title from "../components/Title";
-import { getDataLocalStorage, removeDataLocalStorage, saveDataLocalStorage } from "../services/localStorage";
+import { getDataLocalStorage } from "../services/localStorage";
 
 function RecipeInProgressList() {
   const [listInProgress, setListInProgress] = useState([]);
@@ -12,7 +12,7 @@ function RecipeInProgressList() {
   useEffect(() => {
     const listRecipesInProgress = getDataLocalStorage('listAllRecipesInProgress');
     setListInProgress(listRecipesInProgress);
-  });
+  }, []);
 
   const attListInProgress = () => {
     const listRecipesInProgress = getDataLocalStorage('listAllRecipesInProgress');
@@ -34,7 +34,10 @@ function RecipeInProgressList() {
               <div className="box-descriptions-favorite">
                 <p className="name-recipe">{recipe.name}</p>
                 <div className="container-options">
-                  <ButtonContinueRecipe />
+                  <ButtonContinueRecipe 
+                    id={ recipe.id }
+                    page={ recipe.page }
+                  />
                   <ButtonDeleteRecipeInProgress 
                     id={ recipe.id }
                     func={ attListInProgress }

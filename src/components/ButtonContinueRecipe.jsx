@@ -1,9 +1,20 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { fetchRecipeDrinkInProgress } from "../feature/drinks/drinksSlice";
+import { fetchRecipeMealInProgress } from "../feature/meals/mealsSlice";
 
-function ButtonContinueRecipe() {
+function ButtonContinueRecipe({id, page}) {
+  const dispacth = useDispatch();
+  const navigate = useNavigate();
 
   const handleClick = () => {
-    console.log('continue');
+    if (page === 'meals') {
+      dispacth(fetchRecipeMealInProgress(id));
+    } else if (page === 'drinks') {
+      dispacth(fetchRecipeDrinkInProgress(id));
+    }
+    navigate(`/${page}/${id}/in-progress`);
   };
 
   return (
