@@ -1,7 +1,7 @@
 import React from "react";
 import { getDataLocalStorage, removeDataLocalStorage, saveDataLocalStorage } from "../services/localStorage";
 
-function ButtonDeleteRecipeInProgress({id}) {
+function ButtonDeleteRecipeInProgress({id, func}) {
   const listRecipesInProgress = getDataLocalStorage("listAllRecipesInProgress");
 
   const handleClick = () => {
@@ -9,6 +9,7 @@ function ButtonDeleteRecipeInProgress({id}) {
     saveDataLocalStorage("listAllRecipesInProgress", newListRecipes);
     saveDataLocalStorage("recipeInProgress", []);
     removeDataLocalStorage(id);
+    func();
   };
 
   return (

@@ -1,20 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ButtonContinueRecipe from "../components/ButtonContinueRecipe";
 import ButtonDeleteRecipeInProgress from "../components/ButtonDeleteRecipeInProgress";
 import ButtonPageUp from "../components/ButtonPageUp";
 import Header from "../components/Header";
 import Title from "../components/Title";
-import { getDataLocalStorage } from "../services/localStorage";
+import { getDataLocalStorage, removeDataLocalStorage, saveDataLocalStorage } from "../services/localStorage";
 
 function RecipeInProgressList() {
-  const listRecipesInProgress = getDataLocalStorage('listAllRecipesInProgress');
+  const [listInProgress, setListInProgress] = useState([]);
+
+  useEffect(() => {
+    const listRecipesInProgress = getDataLocalStorage('listAllRecipesInProgress');
+    setListInProgress(listRecipesInProgress);
+  });
+
+  const attListInProgress = () => {
+    const listRecipesInProgress = getDataLocalStorage('listAllRecipesInProgress');
+    setListInProgress(listRecipesInProgress);
+  };
+
 
   return(
     <div>
       <Header />
       <Title title={ 'Receitas iniciadas' } />
       <div className="container-recipe-favorite">
-        { listRecipesInProgress.map((recipe, index) => (
+        { listInProgress.map((recipe, index) => (
           <div key={index} className="container-favorite-info">
             <div className="container-descriptions-favorite">
               <div>
@@ -24,7 +35,10 @@ function RecipeInProgressList() {
                 <p className="name-recipe">{recipe.name}</p>
                 <div className="container-options">
                   <ButtonContinueRecipe />
-                  <ButtonDeleteRecipeInProgress id={ recipe.id }/>
+                  <ButtonDeleteRecipeInProgress 
+                    id={ recipe.id }
+                    func={ attListInProgress }
+                  />
                 </div>
               </div>
             </div>
