@@ -14,6 +14,10 @@ if (!JSON.parse(localStorage.getItem('doneRecipes'))) {
   localStorage.setItem('doneRecipes', JSON.stringify([]));
 };
 
+if (!JSON.parse(localStorage.getItem('registerUser'))) {
+  localStorage.setItem('registerUser', JSON.stringify([]));
+};
+
 export const getDataLocalStorage = (label) => {
   const data = JSON.parse(localStorage.getItem(label));
   return data;
