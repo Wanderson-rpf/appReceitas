@@ -10,6 +10,10 @@ if (!JSON.parse(localStorage.getItem('recipeInProgress'))) {
   localStorage.setItem('recipeInProgress', JSON.stringify([]));
 };
 
+if (!JSON.parse(localStorage.getItem('doneRecipes'))) {
+  localStorage.setItem('doneRecipes', JSON.stringify([]));
+};
+
 export const getDataLocalStorage = (label) => {
   const data = JSON.parse(localStorage.getItem(label));
   return data;
