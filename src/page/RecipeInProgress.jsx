@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
 import ButtonDoneRecipe from "../components/ButtonDoneRecipe";
 import ButtonFavorite from "../components/ButtonFavorite";
+import ButtonPageUp from "../components/ButtonPageUp";
 import ButtonShared from "../components/ButtonShared";
 import Header from "../components/Header";
 import { fetchRecipeDrinkInProgress } from "../feature/drinks/drinksSlice";
 import { fetchRecipeMealInProgress } from "../feature/meals/mealsSlice";
-import { listIngredients } from "../helpers/FunctionsAssistants";
+import { listIngredients, listMeasure } from "../helpers/FunctionsAssistants";
 import { getDataLocalStorage, saveDataLocalStorage } from "../services/localStorage";
 
 function RecipeInProgress() {
@@ -44,6 +45,7 @@ function RecipeInProgress() {
   };
 
   const ingredientsList = listIngredients(verifyTypeRecipe());
+    const measureList = listMeasure(verifyTypeRecipe());
 
   const saveProgressCheckIngredients = ({ target }) => {
     const { name, checked } = target;
@@ -95,7 +97,10 @@ function RecipeInProgress() {
               {ingredientsList.map((ingredient, index) => (
                 <ul key={index}>
                   <li className="item-list">
-                    <label htmlFor={ `ingredient-${index}` }>
+                    <label 
+                      htmlFor={ `ingredient-${index}` }
+                      className={ ckeckListIngredients.includes(ingredient) ? 'checked' : '' }
+                    >
                       <input 
                         type="checkbox" 
                         id={ `ingredient-${index}` } 
@@ -103,7 +108,7 @@ function RecipeInProgress() {
                         onChange={ saveProgressCheckIngredients }
                         checked={ ckeckListIngredients.includes(ingredient) }
                       />
-                      {ingredient}
+                      <span className="check-list">{`${measureList[index]} - ${ingredient}`}</span>
                     </label>
                   </li>
                 </ul>
@@ -134,6 +139,7 @@ function RecipeInProgress() {
         recipe={ isMeal ? mealsRecipe : drinksRecipe }
         page={ isMeal ? 'meals' : 'drinks' }
       />
+      <ButtonPageUp />
     </div>
   );
 }

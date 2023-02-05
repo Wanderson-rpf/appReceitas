@@ -66,7 +66,7 @@ function Menu() {
           <li className="opt-logout">
             <Link to="/" className="list-items">
               <FiLogOut className="icon-menu" />
-              <p>Sign out</p>
+              <p>Sair</p>
             </Link>
           </li>
         </ul>
