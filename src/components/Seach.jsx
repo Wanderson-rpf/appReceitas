@@ -53,7 +53,7 @@ function Seach() {
             type="text"
             name="search"
             id="input__search"
-            placeholder="Search"
+            placeholder="Pesquisar"
             value={ search }
             onChange={ ({target}) => setSearch(target.value) }
             onClick={ () => setShowSearch(!showSearch) }
@@ -72,7 +72,7 @@ function Seach() {
                   checked={ filter === 'name' }
                   onChange={ ({target}) => setFilter(target.value) }
                 />
-                Name
+                Nome
               </label>
               <label htmlFor="radio__ingred">
                 <input
@@ -84,7 +84,7 @@ function Seach() {
                   checked={ filter === 'ingredient' }
                   onChange={ ({target}) => setFilter(target.value) }
                 />
-                Ingredients
+                Ingrediente
               </label>
               <label htmlFor="radio__firstLetter">
                 <input
@@ -100,7 +100,7 @@ function Seach() {
               </label>
             </div>
           <button type="button" className="btn-search" onClick={ handleSearch }>
-            Search
+            Buscar
           </button>
         </div>
         )}
