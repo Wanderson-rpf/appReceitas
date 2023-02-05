@@ -416,3 +416,20 @@ body {
 .checked {
   @apply line-through;
 }
+
+/* <------------------ Page Profile ------------------ > */
+.container-user {
+  @apply flex flex-col gap-3 items-center justify-center mt-8 text-clrMain-100;
+}
+
+.icon-user {
+  @apply text-5xl;
+}
+
+.email-logged {
+  @apply text-xl;
+}
+
+.btn-profile {
+  @apply text-xl p-2;
+}
