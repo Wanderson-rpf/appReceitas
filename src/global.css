@@ -408,3 +408,11 @@ body {
 .container-options {
   @apply flex flex-col items-center justify-center mb-2;
 }
+
+.check-list {
+  @apply m-2;
+}
+
+.checked {
+  @apply line-through;
+}
