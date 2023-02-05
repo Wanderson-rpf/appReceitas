@@ -18,23 +18,22 @@ function Home() {
       <img src={logoPrincipal} alt="logo branca" />
       <div className="container-intro">
         <p className="text-intro">
-          Cadastre-se para ter uma experiencia mais personalizada, salvando suas
-          receitas favoritas em seu perfil.
+          Cadastre-se entre e boa apetite!
         </p>
         <p className="text-intro">
-          Caso já tenha cadastro, clique em login.
+          Caso já tenha cadastro, clique em Entrar.
         </p>
       </div>
-      <div className="container-buttons">
+      <div className="container-buttons-home">
         <button
           className="btn-home"
           type="button"
           onClick={handleClickRegister}
         >
-          Register
+          Cadastro
         </button>
         <button className="btn-home" type="button" onClick={handleClickLogin}>
-          Login
+          Entrar
         </button>
       </div>
     </div>
