@@ -18,8 +18,8 @@ body {
   @apply pb-3;
 }
 
-.container-buttons {
-  @apply flex pb-20;
+.container-buttons-home {
+  @apply flex pb-20 gap-0;
 }
 
 .text-intro {
@@ -36,6 +36,11 @@ body {
 
 .input-login {
   @apply bg-gray-50 border border-white text-gray-900 text-sm rounded-lg focus:border-white block w-full p-2.5 dark:bg-white bg-opacity-50 dark:border-gray-400 dark:placeholder-gray-400
+}
+
+.icon_password {
+  transform: translateX(150px) translatey(-30px);
+  @apply relative text-clrMain-100 text-2xl;
 }
 
 .btn-login {

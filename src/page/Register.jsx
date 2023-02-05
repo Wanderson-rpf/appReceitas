@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { saveUser } from "../feature/user/userSlice";
@@ -10,6 +11,7 @@ function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isDisable, setIsDisable] = useState(true);
+  const [showPassword, setShowPassword] = useState(false);
   const dispacth = useDispatch();
   const navigate = useNavigate();
 
@@ -48,6 +50,14 @@ function Register() {
     navigate('/login');
   };
 
+  const handleShowHidePassword = () => {
+    if (showPassword) {
+      setShowPassword(false);
+    } else {
+      setShowPassword(true);
+    }
+  };
+
   return (
     <div className="login-container">
       <img src={logoPrincipal} alt="Logo branca" />
@@ -77,13 +87,24 @@ function Register() {
         <label htmlFor="input__password">
           <input
             className="input-login"
-            type="password"
+            type={ showPassword ? 'text' : 'password' }
             name="input-password"
             id="input__password"
             placeholder="password"
             value={password}
             onChange={({ target }) => setPassword(target.value)}
           />
+          { showPassword ? (
+            <AiOutlineEyeInvisible
+              className="icon_password"
+              onClick={ handleShowHidePassword }
+            />
+          ) : (
+            <AiOutlineEye
+              className="icon_password"
+              onClick={ handleShowHidePassword }
+            />
+          )}
         </label>
         <button
           type="button"
